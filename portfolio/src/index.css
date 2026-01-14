@@ -1,0 +1,92 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background-sage: #94b86d;
+  --color-background-forest: #9fbf7c;
+  --color-brand-yellow: #fde768;
+  --color-text-accent: #af2500;
+  --color-text-main: #2b120a;
+  --color-card-gradient-start: rgba(88, 129, 87, 0.08);
+  --color-card-gradient-end: rgba(74, 89, 57, 0.2);
+
+  --font-inter: "Inter", sans-serif;
+}
+
+@layer base {
+  @font-face {
+    font-family: 'Inter';
+    src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+  }
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+
+:root {
+  --background: #94b86d;
+  --foreground: #2b120a;
+  --card: rgba(255, 255, 255, 0.1);
+  --card-foreground: #2b120a;
+  --popover: #94b86d;
+  --popover-foreground: #2b120a;
+  --primary: #af2500;
+  --primary-foreground: #ffffff;
+  --secondary: #fde768;
+  --secondary-foreground: #2b120a;
+  --muted: rgba(43, 18, 10, 0.1);
+  --muted-foreground: rgba(43, 18, 10, 0.7);
+  --accent: #fde768;
+  --accent-foreground: #2b120a;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: rgba(43, 18, 10, 0.2);
+  --input: rgba(43, 18, 10, 0.2);
+  --ring: #af2500;
+  --radius: 13px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-background text-foreground font-inter;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
