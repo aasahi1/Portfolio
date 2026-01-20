@@ -3,7 +3,7 @@ import SkillsGrid from "@/assets/skills-grid.svg?react"
 export function Skills() {
   return (
     <section id="skills" className="w-full py-24 bg-background-forest/20">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-8 sm:px-12 lg:px-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
           <div className="relative flex justify-center lg:justify-end">
             <div className="relative h-[450px] w-[500px] flex items-center justify-center">

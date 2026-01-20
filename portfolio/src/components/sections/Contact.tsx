@@ -32,7 +32,7 @@ export function Contact() {
       <LadybugBottom className="absolute top-10 right-10 w-[96px] h-[96px] opacity-100" />
       <CloverFooter className="absolute bottom-[-20px] left-[-20px] w-[145px] h-[164px] opacity-40" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-8 sm:px-12 lg:px-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-12 pt-10">
             <div className="space-y-4">

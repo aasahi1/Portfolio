@@ -5,43 +5,98 @@ import HeroPattern from "@/assets/hero-bg-pattern.svg?react"
 
 export function Hero() {
   return (
-    <section className="relative min-h-[576px] w-full flex flex-col items-center justify-center overflow-hidden pt-10 pb-20">
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 opacity-100">
-        <HeroPattern className="w-full h-full object-cover" />
+    <section className="relative isolate min-h-[576px] w-full overflow-hidden pt-10 pb-20">
+      {/* Background */}
+      <div className="absolute inset-0 -z-10">
+        <HeroPattern className="h-full w-full object-cover" />
       </div>
 
-      <LadybugTop className="absolute top-4 left-[-100px] w-[450px] h-[450px] opacity-100 rotate-[15deg] drop-shadow-2xl" />
-      <LadybugBottom className="absolute top-[-20px] right-[-120px] w-[550px] h-[550px] opacity-100 rotate-[-15deg] scale-x-[-1] drop-shadow-2xl" />
+      {/* Content wrapper */}
+      <div className="relative mx-auto flex min-h-[480px] max-w-5xl items-center justify-center px-6">
+        {/* LEFT LADYBUG — facing DOWN toward center */}
+        <LadybugBottom
+          className="
+            pointer-events-none select-none
+            absolute hidden md:block
+            -translate-y-1/2
+            rotate-[170deg]
+            drop-shadow-2xl
 
-      <div className="relative text-center space-y-2 px-6">
-        <h1 className="text-[72px] font-black text-text-main leading-[72px]">
-          Amna Sahi
-        </h1>
-        <div className="space-y-1">
-          <h2 className="text-2xl font-black text-text-main">
-            Product Designer & Developer
-          </h2>
-          <p className="text-xl text-text-main/80 font-normal">
-            Code, design, and luck intertwined
-          </p>
-        </div>
+            md:left-[-170px] md:top-[12%] md:h-[400px] md:w-[400px]
+            lg:left-[-200px] lg:top-[10%] lg:h-[450px] lg:w-[450px]
+            xl:left-[-220px] xl:top-[9%]  xl:h-[500px] xl:w-[500px]
+          "
+        />
 
-        <div className="flex items-center justify-center gap-3 pt-10">
-          <Button className="bg-text-main text-brand-yellow hover:bg-text-main/90 h-10 px-6 text-base font-bold rounded-full shadow-lg">
-            See work
-          </Button>
-          <Button variant="outline" className="border-none bg-brand-yellow/70 text-text-main hover:bg-brand-yellow h-10 px-6 text-base font-bold rounded-full shadow-lg">
-            About me
-          </Button>
+        {/* RIGHT LADYBUG — facing UP toward center */}
+        <LadybugTop
+          className="
+            pointer-events-none select-none
+            absolute hidden md:block
+            top-1/2 -translate-y-1/2
+            rotate-[-10deg]
+            drop-shadow-2xl
+
+            md:right-[-200px] md:h-[450px] md:w-[450px]
+            lg:right-[-230px] lg:h-[500px] lg:w-[500px]
+            xl:right-[-260px] xl:h-[560px] xl:w-[560px]
+          "
+        />
+
+        {/* TEXT */}
+        <div className="relative w-full max-w-xl text-left space-y-2">
+          <h1 className="text-[56px] leading-[56px] sm:text-[72px] sm:leading-[72px] font-black text-text-main">
+            Amna Sahi
+          </h1>
+
+          <div className="space-y-1">
+            <h2 className="text-xl sm:text-2xl font-black text-text-main">
+              Product Designer & Developer
+            </h2>
+            <p className="text-base sm:text-xl text-text-main/80">
+              Code, design, and luck intertwined
+            </p>
+          </div>
+
+          <div className="flex items-center justify-start gap-3 pt-5">
+            <Button
+              asChild
+              className="bg-text-main text-brand-yellow hover:bg-text-main/90 h-10 px-6 font-bold rounded-full shadow-lg"
+            >
+              <a href="#projects">See work</a>
+            </Button>
+
+            <Button
+              asChild
+              variant="outline"
+              className="border-none bg-brand-yellow/70 text-text-main hover:bg-brand-yellow h-10 px-6 font-bold rounded-full shadow-lg"
+            >
+              <a href="#about">About me</a>
+            </Button>
+          </div>
         </div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-brand-yellow">
+      {/* Scroll cue (to About) */}
+      <a
+        href="#about"
+        aria-label="Scroll to About me"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-brand-yellow"
+        >
           <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
         </svg>
-      </div>
+      </a>
     </section>
   )
 }

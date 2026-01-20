@@ -56,8 +56,8 @@ export function Projects() {
   }, [api])
 
   return (
-    <section id="portfolio" className="w-full py-12 px-6 overflow-hidden">
-      <div className="container mx-auto pt-10">
+    <section id="portfolio" className="w-full py-12 overflow-hidden">
+      <div className="container mx-auto pt-10 px-8 sm:px-12 lg:px-20">
         <div className="text-center mb-6">
           <h2 className="text-[64px] font-black text-text-main leading-none mb-2">Past Projects</h2>
           <p className="max-w-2xl mx-auto text-text-main/80 text-[15.75px] leading-[20.5px]">

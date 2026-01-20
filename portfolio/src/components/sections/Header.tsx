@@ -6,7 +6,7 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 z-50 w-full bg-brand-yellow shadow-md">
-      <div className="container mx-auto flex h-16 items-center justify-between px-6">
+      <div className="container mx-auto flex h-16 items-center justify-between px-8 sm:px-12">
         <div className="text-4xl font-black text-text-main tracking-tight">Amna Sahi.</div>
 
         <nav className="hidden items-center gap-7 md:flex">

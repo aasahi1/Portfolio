@@ -48,8 +48,8 @@ export function Art() {
   }, [api])
 
   return (
-    <section id="art" className="w-full py-6 px-6 overflow-hidden">
-      <div className="container mx-auto">
+    <section id="art" className="w-full py-6 overflow-hidden">
+      <div className="container mx-auto px-8 sm:px-12 lg:px-20">
         <div className="text-center mb-2">
           <h2 className="text-[64px] font-black text-text-main leading-none mb-0">Art & ...more</h2>
           <p className="max-w-2xl mx-auto text-text-main/80 text-[15.75px] leading-[20.5px]">

@@ -10,15 +10,15 @@ import LadybugSmall from "@/assets/clover-small.svg?react"
 
 export function About() {
   return (
-    <section id="about" className="relative w-full py-24 bg-white/10 overflow-hidden">
-      <CloverSide className="absolute top-20 left-4 w-10 opacity-40" />
+    <section id="about" className="relative w-full py-32 bg-white/10 overflow-hidden">
+      <CloverSide className="absolute top-24 left-4 w-12 opacity-30 rotate-12" />
       
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-6 max-w-xl">
-            <h2 className="text-[64px] font-black text-text-accent leading-[42px]">About mee!</h2>
+      <div className="container mx-auto px-8 sm:px-12 lg:px-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="space-y-8 max-w-xl">
+            <h2 className="text-[64px] font-black text-text-accent leading-[38px] tracking-tight">About mee!</h2>
 
-            <div className="space-y-6 text-text-main/80 text-[15.75px] leading-[24.5px]">
+            <div className="space-y-6 text-text-main/80 text-[16px] leading-[26px]">
               <p>
                 I'm a passionate product designer and developer dedicated to creating meaningful digital experiences.
                 My approach combines user research, creative problem-solving, and technical expertise to deliver
@@ -42,11 +42,11 @@ export function About() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 relative">
-            <CloverCard icon={<CloverBaker />} title="Baker" desc="Apple crumble?" className="mt-12" ladybugPos="bottom-left" />
-            <CloverCard icon={<CloverArtist />} title="Artist" desc="Painter & Illustrator" ladybugPos="top-right" />
-            <CloverCard icon={<CloverReader />} title="Reader" desc="Classic & Gothic lit" ladybugPos="bottom-right" />
-            <CloverCard icon={<CloverNerd />} title="Nerd..." desc="Self-explanatory : {" className="-mt-12" ladybugPos="top-left" />
+          <div className="grid grid-cols-2 gap-10 relative">
+            <CloverCard icon={<CloverBaker className="rotate-[-5deg]" />} title="Baker" desc="Apple crumble?" className="mt-16" ladybugPos="bottom-left" />
+            <CloverCard icon={<CloverArtist className="rotate-[5deg]" />} title="Artist" desc="Painter & Illustrator" ladybugPos="top-right" />
+            <CloverCard icon={<CloverReader className="rotate-[3deg]" />} title="Reader" desc="Classic & Gothic lit" className="mt-4" ladybugPos="bottom-right" />
+            <CloverCard icon={<CloverNerd className="rotate-[-3deg]" />} title="Nerd..." desc="Self-explanatory : {" className="-mt-12" ladybugPos="top-left" />
           </div>
         </div>
       </div>
