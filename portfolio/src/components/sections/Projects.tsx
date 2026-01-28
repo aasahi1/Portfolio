@@ -67,11 +67,11 @@ export function Projects() {
 
         <div className="relative overflow-visible pt-0">
           <Carousel setApi={setApi} className="w-full max-w-6xl mx-auto overflow-visible" opts={{ loop: true, align: "center" }}>
-            <CarouselContent className="-ml-10 overflow-visible">
+            <CarouselContent className="-ml-6 sm:-ml-10 overflow-visible">
               {PROJECTS.map((project, index) => (
-                <CarouselItem key={index} className="pl-10 md:basis-[600px] lg:basis-[600px] overflow-visible">
-                  <div className={`group relative flex flex-col items-center pt-4 pb-8 overflow-visible transition-all duration-500 ${current === index ? 'z-30 scale-100 opacity-100' : 'z-20 scale-90 opacity-60'}`}>
-                    <div className="relative w-[506px] h-[380px] rounded-[13px] overflow-hidden transition-transform group-hover:scale-[1.02]">
+                <CarouselItem key={index} className="pl-6 sm:pl-10 basis-full sm:basis-[500px] md:basis-[600px] overflow-visible">
+                  <div className={`group relative flex flex-col items-center pt-4 pb-8 overflow-visible transition-all duration-500 ${current === index ? 'z-30 scale-100 opacity-100' : 'z-20 scale-75 sm:scale-90 opacity-40 sm:opacity-60'}`}>
+                    <div className="relative w-full max-w-[506px] aspect-[4/3] rounded-[13px] overflow-hidden transition-transform group-hover:scale-[1.02]">
                        <img
                         src={project.image}
                         alt={project.title}

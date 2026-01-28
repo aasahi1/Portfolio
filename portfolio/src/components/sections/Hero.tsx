@@ -12,8 +12,12 @@ export function Hero() {
       </div>
 
       {/* Content wrapper */}
-      <div className="relative mx-auto flex min-h-[480px] max-w-5xl items-center justify-center px-6">
-        {/* LEFT LADYBUG — facing DOWN toward center */}
+      <div className="relative mx-auto flex min-h-[480px] max-w-5xl items-center justify-center px-8 sm:px-12 lg:px-20">
+        {/* Mobile Ladybugs (Top/Bottom corners) */}
+        <LadybugBottom className="md:hidden absolute top-[-50px] left-[-50px] w-48 h-48 opacity-20 rotate-[135deg]" />
+        <LadybugTop className="md:hidden absolute bottom-[-50px] right-[-50px] w-48 h-48 opacity-20 rotate-[-45deg]" />
+
+        {/* LEFT LADYBUG — Desktop */}
         <LadybugBottom
           className="
             pointer-events-none select-none
@@ -21,14 +25,13 @@ export function Hero() {
             -translate-y-1/2
             rotate-[170deg]
             drop-shadow-2xl
-
-            md:left-[-170px] md:top-[12%] md:h-[400px] md:w-[400px]
-            lg:left-[-200px] lg:top-[10%] lg:h-[450px] lg:w-[450px]
-            xl:left-[-220px] xl:top-[9%]  xl:h-[500px] xl:w-[500px]
+            md:left-[-195px] md:top-[12%] md:h-[320px] md:w-[320px]
+            lg:left-[-230px] lg:top-[10%] lg:h-[410px] lg:w-[410px]
+            xl:left-[-255px] xl:top-[9%]  xl:h-[460px] xl:w-[460px]
           "
         />
 
-        {/* RIGHT LADYBUG — facing UP toward center */}
+        {/* RIGHT LADYBUG — Desktop */}
         <LadybugTop
           className="
             pointer-events-none select-none
@@ -36,7 +39,6 @@ export function Hero() {
             top-1/2 -translate-y-1/2
             rotate-[-10deg]
             drop-shadow-2xl
-
             md:right-[-200px] md:h-[450px] md:w-[450px]
             lg:right-[-230px] lg:h-[500px] lg:w-[500px]
             xl:right-[-260px] xl:h-[560px] xl:w-[560px]
@@ -44,8 +46,8 @@ export function Hero() {
         />
 
         {/* TEXT */}
-        <div className="relative w-full max-w-xl text-left space-y-2">
-          <h1 className="text-[56px] leading-[56px] sm:text-[72px] sm:leading-[72px] font-black text-text-main">
+        <div className="relative w-full max-w-xl text-center md:text-left space-y-4">
+          <h1 className="text-[48px] leading-[48px] sm:text-[72px] sm:leading-[72px] font-black text-text-main">
             Amna Sahi
           </h1>
 
