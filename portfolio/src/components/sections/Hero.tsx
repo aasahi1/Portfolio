@@ -20,7 +20,7 @@ export function Hero() {
         {/* LEFT LADYBUG — Desktop */}
         <LadybugBottom
           className="
-            pointer-events-none select-none
+            pointer-events-auto
             absolute hidden md:block
             -translate-y-1/2
             rotate-[170deg]
@@ -33,17 +33,18 @@ export function Hero() {
 
         {/* RIGHT LADYBUG — Desktop */}
         <LadybugTop
-          className="
-            pointer-events-none select-none
-            absolute hidden md:block
-            top-1/2 -translate-y-1/2
-            rotate-[-10deg]
-            drop-shadow-2xl
-            md:right-[-200px] md:h-[450px] md:w-[450px]
-            lg:right-[-230px] lg:h-[500px] lg:w-[500px]
-            xl:right-[-260px] xl:h-[560px] xl:w-[560px]
-          "
-        />
+  className="
+    ladybug-svg           /* <--- ADD THIS HOOK */
+    pointer-events-auto
+    absolute hidden md:block
+    top-1/2 -translate-y-1/2
+    rotate-[-10deg]
+    drop-shadow-2xl
+    md:right-[-200px] md:h-[450px] md:w-[450px]
+    lg:right-[-230px] lg:h-[500px] lg:w-[500px]
+    xl:right-[-260px] xl:h-[560px] xl:w-[560px]
+  "
+/>
 
         {/* TEXT */}
         <div className="relative w-full max-w-xl text-center md:text-left space-y-4">
