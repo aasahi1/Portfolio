@@ -11,10 +11,16 @@ export function Header() {
     <header className="fixed top-0 left-0 z-50 w-full bg-brand-yellow shadow-md">
       <div className="container mx-auto flex h-16 items-center justify-between px-6 sm:px-12">
         
-        {/* Logo / Name */}
-        <div className="text-3xl sm:text-4xl font-black text-text-main tracking-tight">
-          Amna Sahi.
-        </div>
+        {/* --- LOGO / NAME --- */}
+<a 
+  href="#" 
+  className="group text-3xl sm:text-4xl font-black text-text-main tracking-tight transition-none"
+>
+  <span className="group-hover:text-text-accent transition-colors duration-300">
+    Amna Sahi
+  </span>
+  <span className="text-text-accent">.</span>
+</a>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6 lg:gap-8">
@@ -33,7 +39,7 @@ export function Header() {
         <div className="flex items-center gap-4">
           <Button
             asChild
-            className="hidden sm:flex bg-text-main text-brand-yellow hover:bg-text-main/90 h-8 px-4 gap-3 font-bold rounded-sm shadow-sm"
+            className="hidden sm:flex bg-text-main text-brand-yellow hover:bg-brand-yellow hover:text-text-main h-8 px-4 gap-3 font-bold rounded-sm shadow-sm transition-all"
           >
             <a href="/Amna_Sahi_Resume.pdf" target="_blank" rel="noopener noreferrer">
               <ResumeIcon className="w-4 h-4" />
@@ -59,7 +65,7 @@ export function Header() {
               key={item}
               href={`#${item.toLowerCase()}`}
               onClick={() => setIsOpen(false)}
-              className="text-2xl font-black text-text-main py-2"
+              className="text-2xl font-black text-text-main hover:text-text-accent transition-colors py-2"
             >
               {item}
             </a>

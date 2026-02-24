@@ -11,7 +11,6 @@ import LadybugSmall from "@/assets/clover-small.svg?react"
 export function About() {
   return (
     <section id="about" className="relative w-full py-32 overflow-hidden bg-brand-light/20">
-      {/* Subtle ambient light behind the content */}
       <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-brand-yellow/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
       
       <CloverSide className="absolute top-24 left-4 w-12 opacity-20 rotate-12 text-brand-green" />
@@ -21,11 +20,15 @@ export function About() {
           
           {/* --- LEFT COLUMN: CONTENT --- */}
           <div className="space-y-8 max-w-xl">
-            <h2 className="text-[64px] font-black text-text-accent leading-[1] tracking-tight">
-              About mee!
+            {/* Header: Modified to keep ! red while text transitions */}
+            <h2 className="group text-[64px] font-black text-text-main leading-[1] tracking-tight cursor-default">
+              <span className="group-hover:text-text-accent transition-colors duration-300">
+                About mee
+              </span>
+              <span className="text-text-accent">!</span>
             </h2>
 
-            <div className="space-y-6 text-text-main/80 text-[17px] leading-[1.6] font-medium">
+            <div className="space-y-6 text-text-main text-[17px] leading-[1.6] font-medium">
               <p>
                 I'm a passionate product designer and developer dedicated to creating meaningful digital experiences.
                 My approach combines user research, creative problem-solving, and technical expertise.
@@ -43,7 +46,6 @@ export function About() {
                 rel="noreferrer"
                 className="group"
               >
-                {/* GITHUB: Dark background, Yellow text. Hovers to Yellow background, Dark text. */}
                 <Button className="bg-text-main text-brand-yellow hover:bg-brand-yellow hover:text-text-main h-[42px] px-6 gap-2 rounded-full shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5">
                   <GithubIcon className="w-5 h-5 fill-current" />
                   <span className="text-[14px] font-bold">Github</span>
@@ -56,23 +58,21 @@ export function About() {
                 rel="noreferrer"
                 className="group"
               >
-                {/* LINKEDIN: Yellow background. Hovers to slightly darker yellow (not white). */}
-                <Button className="bg-brand-yellow text-text-main hover:bg-brand-yellow/80 h-[42px] px-6 gap-2 rounded-full shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5">
+                <Button className="bg-brand-yellow text-text-main hover:bg-text-main hover:text-brand-yellow h-[42px] px-6 gap-2 rounded-full shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5">
                   <span className="text-[14px] font-bold">Linkedin</span>
-                  <LinkedinIcon className="w-[18px] h-5" />
+                  <LinkedinIcon className="w-[18px] h-5 fill-current" />
                 </Button>
               </a>
             </div>
           </div>
 
           {/* --- RIGHT COLUMN: FLOATING ICONS --- */}
-          <div className="grid grid-cols-2 gap-x-8 gap-y-16 relative perspective-1000 pl-4 lg:pl-12">
-            
+          <div className="grid grid-cols-2 gap-x-8 gap-y-4 relative perspective-1000 pl-4 lg:pl-12">
             <CloverItem 
               icon={<CloverBaker className="rotate-[-5deg]" />} 
               title="Painter" 
               desc="Acrylics, Watercolors, Gouache" 
-              className="mt-12" 
+              className="mt-6" 
               ladybugPos="bottom-left"
             />
             
@@ -88,15 +88,15 @@ export function About() {
               icon={<CloverReader className="rotate-[3deg]" />} 
               title="Programmer" 
               desc="React, Next.js, Python" 
-              className="mt-4" 
+              className="mt-0" 
               ladybugPos="bottom-right"
             />
             
             <CloverItem 
               icon={<CloverNerd className="rotate-[-3deg]" />} 
-              title="t" 
-              desc="Self-explanatory : {" 
-              className="-mt-8" 
+              title="UX Researcher" 
+              desc="User Interviews, Usability Testing, Data Analysis" 
+              className="-mt-4" 
               ladybugPos="top-left"
             />
           </div>
@@ -128,7 +128,6 @@ function CloverItem({
 
   return (
     <div className={`flex flex-col items-center text-center group cursor-default ${className}`}>
-      {/* Icon Wrapper */}
       <div className="w-32 h-32 relative flex items-center justify-center transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-3 group-hover:-translate-y-2">
         <div className="absolute inset-0 scale-[1.3] drop-shadow-2xl filter saturate-[1.1]">
           {icon}
@@ -141,10 +140,11 @@ function CloverItem({
         )}
       </div>
 
-      {/* Text Wrapper */}
-      <div className="mt-4 space-y-1 transition-opacity duration-300">
-        <h3 className="text-xl font-black text-text-accent tracking-wide uppercase">{title}</h3>
-        <p className="text-[15px] font-medium text-text-main/60">{desc}</p>
+      <div className="mt-4 space-y-1">
+        <h3 className="text-xl font-black text-text-main tracking-wide uppercase group-hover:text-text-accent transition-colors duration-300">
+          {title}
+        </h3>
+        <p className="text-[15px] font-medium text-text-main">{desc}</p>
       </div>
     </div>
   )

@@ -51,10 +51,7 @@ export function Art() {
     <section id="art" className="w-full py-6 overflow-hidden">
       <div className="container mx-auto px-8 sm:px-12 lg:px-20">
         <div className="text-center mb-2">
-          <h2 className="text-[64px] font-black text-text-main leading-none mb-0">Art & ...more</h2>
-          <p className="max-w-2xl mx-auto text-text-main/80 text-[15.75px] leading-[20.5px]">
-            A selection of my recent work showcasing various design challenges and solutions across different industries and platforms.
-          </p>
+          <h2 className="text-[64px] font-black text-text-main leading-none mb-0">Art & more</h2>
         </div>
 
         <div className="relative overflow-visible pt-0">
@@ -72,7 +69,6 @@ export function Art() {
 
                     <div className={`mt-[-60px] z-10 w-[371px] p-6 rounded-[13px] shadow-2xl space-y-2 border border-black/5 ${project.color}`}>
                       <h3 className="text-xl font-bold text-text-main">{project.title}</h3>
-                      <p className="text-text-main/70 text-sm leading-tight">Microlearning product with community-driven feedback loops.</p>
                       <div className="flex gap-1.5 pt-2">
                         {project.tags.map(tag => (
                           <Badge key={tag} className="bg-text-accent/70 hover:bg-text-accent text-white border-none rounded-full px-3 py-0.5 text-[12px] leading-[12px]">
