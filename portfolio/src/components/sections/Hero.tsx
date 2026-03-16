@@ -1,50 +1,124 @@
+import { useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import LadybugTop from "@/assets/ladybug-top.svg?react"
 import LadybugBottom from "@/assets/ladybug-bottom.svg?react"
 import HeroPattern from "@/assets/hero-bg-pattern.svg?react"
 
 export function Hero() {
+  const leftRef = useRef<HTMLDivElement>(null)
+  const rightRef = useRef<HTMLDivElement>(null)
+  const lastScrollY = useRef(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY
+      const scrollingDown = currentY > lastScrollY.current
+      lastScrollY.current = currentY
+
+      const els = [leftRef.current, rightRef.current].filter(Boolean) as HTMLDivElement[]
+      els.forEach((el) => {
+        if (scrollingDown) {
+          el.classList.add("wings-open")
+        } else {
+          el.classList.remove("wings-open")
+        }
+      })
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   return (
     <section className="relative isolate min-h-[576px] w-full overflow-hidden pt-10 pb-20">
+      <style>{`
+        .ladybug-wrap {
+          transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+          cursor: pointer;
+        }
+        .ladybug-wrap:hover,
+        .ladybug-wrap.wings-open {
+          transform: translateY(0px) scale(1.01);
+        }
+
+        .ladybug-wrap svg .wing-left,
+        .ladybug-wrap svg .wing-right {
+          transition: transform 0.8s cubic-bezier(0.34, 1.2, 0.64, 0.8);
+          transform-box: view-box;
+        }
+        .ladybug-wrap svg .wing-left {
+          transform-origin: 65px 110px;
+        }
+        .ladybug-wrap svg .wing-right {
+          transform-origin: 150px 150px;
+        }
+
+        .ladybug-wrap:hover svg .wing-left,
+        .ladybug-wrap.wings-open svg .wing-left {
+          transform: rotate(20deg);
+        }
+        .ladybug-wrap:hover svg .wing-right,
+        .ladybug-wrap.wings-open svg .wing-right {
+          transform: rotate(-25deg);
+        }
+      `}</style>
+
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <HeroPattern className="h-full w-full object-cover" />
       </div>
 
-      {/* Content wrapper */}
       <div className="relative mx-auto flex min-h-[480px] max-w-5xl items-center justify-center px-8 sm:px-12 lg:px-20">
-        {/* Mobile Ladybugs (Top/Bottom corners) */}
-        <LadybugBottom className="md:hidden absolute top-[-50px] left-[-50px] w-48 h-48 opacity-20 rotate-[135deg]" />
-        <LadybugTop className="md:hidden absolute bottom-[-50px] right-[-50px] w-48 h-48 opacity-20 rotate-[-45deg]" />
+
+        {/* Mobile Ladybugs */}
+        <div className="ladybug-wrap md:hidden absolute top-[-30px] left-[-30px] w-44 h-44">
+          <LadybugBottom className="rotate-[135deg] w-full h-full drop-shadow-xl" />
+        </div>
+        <div className="ladybug-wrap md:hidden absolute bottom-[-30px] right-[-30px] w-44 h-44">
+          <LadybugTop className="rotate-[-45deg] w-full h-full drop-shadow-xl" />
+        </div>
 
         {/* LEFT LADYBUG — Desktop */}
-        <LadybugBottom
-          className="
-            pointer-events-auto
-            absolute hidden md:block
-            -translate-y-1/2
-            rotate-[170deg]
-            drop-shadow-2xl
-            md:left-[-195px] md:top-[12%] md:h-[320px] md:w-[320px]
-            lg:left-[-230px] lg:top-[10%] lg:h-[410px] lg:w-[410px]
-            xl:left-[-255px] xl:top-[9%]  xl:h-[460px] xl:w-[460px]
+        <div
+          ref={leftRef}
+          className="ladybug-wrap pointer-events-auto absolute hidden md:block
+            md:left-[-195px] md:top-[12%]
+            lg:left-[-230px] lg:top-[10%]
+            xl:left-[-255px] xl:top-[9%]
           "
-        />
+        >
+          <LadybugBottom
+            className="
+              -translate-y-1/2
+              rotate-[170deg]
+              drop-shadow-2xl
+              md:h-[320px] md:w-[320px]
+              lg:h-[410px] lg:w-[410px]
+              xl:h-[460px] xl:w-[460px]
+            "
+          />
+        </div>
 
         {/* RIGHT LADYBUG — Desktop */}
-        <LadybugTop
-  className="
-    ladybug-svg           /* <--- ADD THIS HOOK */
-    pointer-events-auto
-    absolute hidden md:block
-    top-1/2 -translate-y-1/2
-    rotate-[-10deg]
-    drop-shadow-2xl
-    md:right-[-200px] md:h-[450px] md:w-[450px]
-    lg:right-[-230px] lg:h-[500px] lg:w-[500px]
-    xl:right-[-260px] xl:h-[560px] xl:w-[560px]
-  "
-/>
+        <div
+          ref={rightRef}
+          className="ladybug-wrap pointer-events-auto absolute hidden md:block
+            top-1/2 -translate-y-1/2
+            md:right-[-200px]
+            lg:right-[-230px]
+            xl:right-[-260px]
+          "
+        >
+          <LadybugTop
+            className="
+              rotate-[-10deg]
+              drop-shadow-2xl
+              md:h-[450px] md:w-[450px]
+              lg:h-[500px] lg:w-[500px]
+              xl:h-[560px] xl:w-[560px]
+            "
+          />
+        </div>
 
         {/* TEXT */}
         <div className="relative w-full max-w-xl text-center md:text-left space-y-4">
@@ -68,7 +142,6 @@ export function Hero() {
             >
               <a href="#projects">See work</a>
             </Button>
-
             <Button
               asChild
               variant="outline"
@@ -80,7 +153,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll cue (to About) */}
+      {/* Scroll cue */}
       <a
         href="#about"
         aria-label="Scroll to About me"
