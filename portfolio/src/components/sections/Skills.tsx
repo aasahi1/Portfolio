@@ -3,13 +3,29 @@ import SkillsGrid from "@/assets/skills-grid.svg?react"
 export function Skills() {
   return (
     <section id="skills" className="w-full py-20 md:py-28 bg-background overflow-hidden">
+      <style>{`
+        /* Each logo group scales from its own centre */
+        .skills-svg [id$=" logo"] {
+          transition:
+            transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+            filter 0.35s ease;
+          transform-box: fill-box;
+          transform-origin: center;
+          cursor: pointer;
+        }
+        .skills-svg [id$=" logo"]:hover {
+          transform: scale(1.22) translateY(-5px);
+          filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.28));
+        }
+      `}</style>
+
       <div className="container mx-auto px-6 sm:px-10 lg:px-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           {/* LEFT: Logo grid */}
           <div className="relative flex justify-center lg:justify-end order-2 lg:order-1">
             <div className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-square flex items-center justify-center">
-              <SkillsGrid className="w-full h-full object-contain" />
+              <SkillsGrid className="skills-svg w-full h-full object-contain overflow-visible" />
             </div>
           </div>
 

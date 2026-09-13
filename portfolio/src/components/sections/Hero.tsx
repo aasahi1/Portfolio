@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react"
+import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import LadybugTop from "@/assets/ladybug-top.svg?react"
 import LadybugBottom from "@/assets/ladybug-bottom.svg?react"
@@ -140,7 +141,7 @@ export function Hero() {
               asChild
               className="bg-text-main text-brand-yellow hover:bg-text-main/90 h-10 px-6 font-bold rounded-full shadow-lg"
             >
-              <a href="#projects">See work</a>
+              <Link to="/projects">See work</Link>
             </Button>
             <Button
               asChild

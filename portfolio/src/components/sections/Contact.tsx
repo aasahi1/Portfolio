@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
@@ -22,48 +22,81 @@ const formSchema = z.object({
 })
 
 export function Contact() {
+  const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState(false)
   const ladybugRef = useRef<HTMLDivElement>(null)
   const lastScrollY = useRef(0)
+  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const triggerFlap = useCallback(() => {
+    if (!ladybugRef.current) return
+    ladybugRef.current.classList.add("wings-open")
+    setTimeout(() => {
+      ladybugRef.current?.classList.remove("wings-open")
+    }, 850)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY
-      const scrollingDown = currentY > lastScrollY.current
+      const isMoving = Math.abs(currentY - lastScrollY.current) > 2
       lastScrollY.current = currentY
 
-      if (ladybugRef.current) {
-        if (scrollingDown) {
-          ladybugRef.current.classList.add("wings-open")
-        } else {
-          ladybugRef.current.classList.remove("wings-open")
-        }
+      if (ladybugRef.current && isMoving) {
+        ladybugRef.current.classList.add("wings-open")
+        if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
+        scrollTimeoutRef.current = setTimeout(() => {
+          ladybugRef.current?.classList.remove("wings-open")
+        }, 350)
       }
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
+    }
   }, [])
 
-  const { register, handleSubmit } = useForm<z.infer<typeof formSchema>>({
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   })
 
-  const onSubmit = (data: any) => console.log(data)
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    setSubmitError(false)
+    try {
+      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(data),
+      })
+      if (res.ok) {
+        setSubmitted(true)
+        reset()
+      } else {
+        setSubmitError(true)
+      }
+    } catch {
+      setSubmitError(true)
+    }
+  }
 
   return (
-    <section id="contact" className="relative w-full py-20 md:py-28 bg-[#9fbf7c] overflow-hidden">
+    <section id="contact" className="relative isolate w-full py-12 md:py-16 bg-[#9fbf7c] overflow-hidden">
       <style>{`
         .ladybug-contact {
           transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
           cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
         }
         .ladybug-contact:hover,
+        .ladybug-contact:active,
         .ladybug-contact.wings-open {
-          transform: scale(1.05);
+          transform: scale(1.08);
         }
         .ladybug-contact svg .wing-left,
         .ladybug-contact svg .wing-right {
-          transition: transform 0.8s cubic-bezier(0.34, 1.2, 0.64, 0.8);
+          transition: transform 0.65s cubic-bezier(0.34, 1.3, 0.64, 1);
           transform-box: view-box;
         }
         .ladybug-contact svg .wing-left {
@@ -73,17 +106,26 @@ export function Contact() {
           transform-origin: 150px 150px;
         }
         .ladybug-contact:hover svg .wing-left,
+        .ladybug-contact:active svg .wing-left,
         .ladybug-contact.wings-open svg .wing-left {
-          transform: rotate(20deg);
+          transform: rotate(22deg);
         }
         .ladybug-contact:hover svg .wing-right,
+        .ladybug-contact:active svg .wing-right,
         .ladybug-contact.wings-open svg .wing-right {
-          transform: rotate(-25deg);
+          transform: rotate(-26deg);
         }
       `}</style>
 
-      <div ref={ladybugRef} className="ladybug-contact absolute top-4 right-4 sm:top-6 sm:right-6 pointer-events-auto z-20">
-        <LadybugBottom className="w-32 h-32 sm:w-40 sm:h-40" />
+      {/* Single small ladybug restored in the corner */}
+      <div
+        ref={ladybugRef}
+        onClick={triggerFlap}
+        onTouchStart={triggerFlap}
+        className="ladybug-contact absolute top-5 right-5 sm:top-8 sm:right-8 md:top-8 md:right-12 pointer-events-auto z-20 select-none"
+        aria-label="Interactive Ladybug"
+      >
+        <LadybugBottom className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rotate-[15deg] drop-shadow-lg" />
       </div>
 
       <CloverFooter className="absolute bottom-[-20px] left-[-20px] w-32 h-32 opacity-30 pointer-events-none" />
@@ -115,39 +157,68 @@ export function Contact() {
               <p className="text-sm text-text-main/60">I'll get back to you within 24 hours.</p>
             </CardHeader>
             <CardContent className="p-0">
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="space-y-1.5">
-                    <Label className="text-text-main font-medium text-[13px]">First Name</Label>
-                    <Input {...register("firstName")} placeholder="Jane" className="bg-[#fde768]/40 border-none placeholder:text-text-main/50 h-10 rounded-xl text-[13px]" />
+              {submitted ? (
+                <div className="py-10 flex flex-col items-center gap-3 text-center">
+                  <span className="text-3xl">🎉</span>
+                  <p className="font-black text-text-main text-base">Message sent!</p>
+                  <p className="text-text-main/60 text-sm">Thanks for reaching out — I'll be in touch soon.</p>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="mt-2 text-[12px] font-bold text-text-main/50 underline underline-offset-2 hover:text-text-main transition-colors"
+                  >
+                    Send another message
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="space-y-1.5">
+                      <Label className="text-text-main font-medium text-[13px]">First Name</Label>
+                      <Input {...register("firstName")} placeholder="Jane" className="bg-[#fde768]/40 border-none placeholder:text-text-main/50 h-10 rounded-xl text-[13px]" />
+                      {errors.firstName && <p className="text-[11px] font-semibold text-red-700">{errors.firstName.message}</p>}
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label className="text-text-main font-medium text-[13px]">Last Name</Label>
+                      <Input {...register("lastName")} placeholder="Doe" className="bg-[#fde768]/40 border-none placeholder:text-text-main/50 h-10 rounded-xl text-[13px]" />
+                      {errors.lastName && <p className="text-[11px] font-semibold text-red-700">{errors.lastName.message}</p>}
+                    </div>
                   </div>
+
                   <div className="space-y-1.5">
-                    <Label className="text-text-main font-medium text-[13px]">Last Name</Label>
-                    <Input {...register("lastName")} placeholder="Doe" className="bg-[#fde768]/40 border-none placeholder:text-text-main/50 h-10 rounded-xl text-[13px]" />
+                    <Label className="text-text-main font-medium text-[13px]">Email</Label>
+                    <Input {...register("email")} placeholder="jane@example.com" className="bg-[#fde768]/40 border-none placeholder:text-text-main/50 h-10 rounded-xl text-[13px]" />
+                    {errors.email && <p className="text-[11px] font-semibold text-red-700">{errors.email.message}</p>}
                   </div>
-                </div>
 
-                <div className="space-y-1.5">
-                  <Label className="text-text-main font-medium text-[13px]">Email</Label>
-                  <Input {...register("email")} placeholder="jane@example.com" className="bg-[#fde768]/40 border-none placeholder:text-text-main/50 h-10 rounded-xl text-[13px]" />
-                </div>
+                  <div className="space-y-1.5">
+                    <Label className="text-text-main font-medium text-[13px]">Subject</Label>
+                    <Input {...register("subject")} placeholder="Let's work together" className="bg-[#fde768]/40 border-none placeholder:text-text-main/50 h-10 rounded-xl text-[13px]" />
+                    {errors.subject && <p className="text-[11px] font-semibold text-red-700">{errors.subject.message}</p>}
+                  </div>
 
-                <div className="space-y-1.5">
-                  <Label className="text-text-main font-medium text-[13px]">Subject</Label>
-                  <Input {...register("subject")} placeholder="Let's work together" className="bg-[#fde768]/40 border-none placeholder:text-text-main/50 h-10 rounded-xl text-[13px]" />
-                </div>
+                  <div className="space-y-1.5">
+                    <Label className="text-text-main font-medium text-[13px]">Message</Label>
+                    <Textarea {...register("message")} placeholder="Tell me about your project..." className="bg-[#fde768]/40 border-none placeholder:text-text-main/50 min-h-[90px] rounded-xl text-[13px]" />
+                    {errors.message && <p className="text-[11px] font-semibold text-red-700">{errors.message.message}</p>}
+                  </div>
 
-                <div className="space-y-1.5">
-                  <Label className="text-text-main font-medium text-[13px]">Message</Label>
-                  <Textarea {...register("message")} placeholder="Tell me about your project..." className="bg-[#fde768]/40 border-none placeholder:text-text-main/50 min-h-[90px] rounded-xl text-[13px]" />
-                </div>
+                  {submitError && (
+                    <p className="text-[12px] font-semibold text-red-700 text-center">
+                      Something went wrong — try emailing me directly at aasahi@uwaterloo.ca
+                    </p>
+                  )}
 
-                <div className="pt-1 flex justify-center">
-                  <Button type="submit" className="bg-[#fde768] text-text-main hover:bg-[#fde768]/90 h-10 px-10 font-bold rounded-full shadow-md text-[13px]">
-                    Send Message
-                  </Button>
-                </div>
-              </form>
+                  <div className="pt-1 flex justify-center">
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="bg-[#fde768] text-text-main hover:bg-[#fde768]/90 h-10 px-10 font-bold rounded-full shadow-md text-[13px] disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                      {isSubmitting ? "Sending…" : "Send Message"}
+                    </Button>
+                  </div>
+                </form>
+              )}
             </CardContent>
           </Card>
         </div>

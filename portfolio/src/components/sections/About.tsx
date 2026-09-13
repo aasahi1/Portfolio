@@ -3,8 +3,8 @@ import GithubIcon from "@/assets/icon-github.svg?react"
 import LinkedinIcon from "@/assets/icon-linkedin.svg?react"
 import CloverBaker from "@/assets/clover-baker.svg?react"
 import CloverReader from "@/assets/clover-reader.svg?react"
-import CloverArtist from "@/assets/clover-reader.svg?react"
-import CloverNerd from "@/assets/clover-baker.svg?react"
+import CloverArtist from "@/assets/clover-artist.svg?react"
+import CloverNerd from "@/assets/clover-nerd.svg?react"
 import LadybugSmall from "@/assets/clover-small.svg?react"
 
 export function About() {
@@ -18,17 +18,41 @@ export function About() {
           {/* LEFT: Content */}
           <div className="space-y-7 max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
             <h2 className="group text-[52px] sm:text-[64px] font-black text-text-main leading-[1] tracking-tight cursor-default">
-              <span className="group-hover:text-text-accent transition-colors duration-300">About mee</span>
+              <span className="group-hover:text-text-accent transition-colors duration-300">About me</span>
               <span className="text-text-accent">!</span>
             </h2>
 
-            <div className="space-y-5 text-text-main text-[16px] sm:text-[17px] leading-[1.7] font-medium">
-              <p>
+            {/* Photo + Intro Paragraph */}
+            <div className="flex flex-col sm:flex-row gap-6 sm:gap-7 items-center sm:items-start text-center sm:text-left">
+              {/* Profile Photo Frame */}
+              <div className="relative shrink-0 group cursor-pointer">
+                <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-3xl overflow-hidden bg-brand-yellow/30 border-2 border-text-main/15 shadow-xl transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-2 flex items-center justify-center">
+                  <img
+                    src="/profile.jpg"
+                    alt="Amna Sahi portrait"
+                    className="w-full h-full object-cover object-[54%_46%] scale-[2.7] select-none pointer-events-none transition-transform duration-500 group-hover:scale-[2.85]"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null
+                      e.currentTarget.src = "/placeholder-profile.jpg"
+                    }}
+                  />
+                </div>
+                <div className="absolute -bottom-2 -right-2 w-8 h-8 sm:w-9 sm:h-9 z-20 pointer-events-none transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110">
+                  <LadybugSmall className="w-full h-full text-[#af2500] drop-shadow-md rotate-12" />
+                </div>
+              </div>
+
+              {/* First paragraph */}
+              <p className="flex-1 text-text-main text-[16px] sm:text-[17px] leading-[1.7] font-medium pt-1">
                 I'm a Digital Arts student at the University of Waterloo with minors in Computing and Psychology —
                 which is a fancy way of saying I think about people, then build things for them. I work across
                 design, front-end development, and creative technology, and I care a lot about the space where
                 all three meet.
               </p>
+            </div>
+
+            {/* Second paragraph */}
+            <div className="space-y-5 text-text-main text-[16px] sm:text-[17px] leading-[1.7] font-medium">
               <p>
                 I've shipped React apps for health-tech startups, won design sprints, and had an interactive
                 installation exhibited at THEMUSEUM in Kitchener. Outside of screens, I paint — acrylics,

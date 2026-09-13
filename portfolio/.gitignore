@@ -11,6 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
+*.zip
+.edge-headless-profile/
+.figma-headless-profile/
 
 # Editor directories and files
 .vscode/*
