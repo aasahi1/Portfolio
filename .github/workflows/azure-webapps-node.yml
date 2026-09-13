@@ -24,8 +24,8 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: your-app-name    # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '20.x'                # set this to the node version to use
+  AZURE_WEBAPP_PACKAGE_PATH: 'portfolio/dist'
+  NODE_VERSION: '24.x'
 
 permissions:
   contents: read
@@ -34,25 +34,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Set up Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v7
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
+        cache-dependency-path: portfolio/package-lock.json
 
-    - name: npm install, build, and test
+    - name: Install dependencies and build
+      working-directory: portfolio
       run: |
-        npm install
-        npm run build --if-present
-        npm run test --if-present
+        npm ci
+        npm run build
 
     - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: node-app
-        path: .
+        path: portfolio/dist
+        if-no-files-found: error
 
   deploy:
     permissions:
@@ -65,13 +67,14 @@ jobs:
 
     steps:
     - name: Download artifact from build job
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: node-app
+        path: portfolio/dist
 
     - name: 'Deploy to Azure WebApp'
       id: deploy-to-webapp
-      uses: azure/webapps-deploy@v2
+      uses: azure/webapps-deploy@v3
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
