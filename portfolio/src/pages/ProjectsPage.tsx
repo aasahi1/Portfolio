@@ -1,22 +1,11 @@
-import { useState } from "react"
 import { Link } from "react-router-dom"
-import { PROJECTS, type Project } from "@/data/projects"
+import { FEATURED_PROJECTS, PROJECTS, type Project } from "@/data/projects"
 import { Badge } from "@/components/ui/badge"
 import CloverSmall from "@/assets/clover-small.svg?react"
 import { Ladybugs } from "@/components/Ladybugs"
 import { ArrowUpRight, Sparkles, LockKeyhole } from "lucide-react"
 
-type FilterCategory = "All" | "UX / Product" | "Development" | "Branding"
-
 export function ProjectsPage() {
-  const [activeCategory, setActiveCategory] = useState<FilterCategory>("All")
-
-  const categories: FilterCategory[] = ["All", "UX / Product", "Development", "Branding"]
-
-  const filteredProjects = activeCategory === "All" 
-    ? PROJECTS 
-    : PROJECTS.filter(p => p.category === activeCategory)
-
   return (
     <div className="relative isolate w-full py-16 md:py-24 bg-background overflow-hidden flex-1">
       <Ladybugs
@@ -30,45 +19,19 @@ export function ProjectsPage() {
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-yellow/40 border border-text-main/10 text-xs font-bold uppercase tracking-widest text-text-main shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-text-accent" />
-            Selected Portfolio & Case Studies
+            Product Design · Selected Work
           </div>
           <h1 className="text-[48px] sm:text-[64px] font-black text-text-main leading-none tracking-tight">
-            Featured Projects<span className="text-text-accent">.</span>
+            Product design, end to end<span className="text-text-accent">.</span>
           </h1>
           <p className="text-text-main/80 text-base sm:text-lg font-medium leading-relaxed max-w-2xl mx-auto">
-            A curated collection of work spanning product design, UX research, front-end development, and brand strategy.
+            From motivating everyday habits to making complex systems easier to understand, these case studies show how I move from a user need to a considered product experience.
           </p>
         </div>
 
-        {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-14">
-          {categories.map((cat) => {
-            const count = cat === "All" ? PROJECTS.length : PROJECTS.filter(p => p.category === cat).length
-            const isActive = activeCategory === cat
-            return (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-wider transition-all cursor-pointer ${
-                  isActive
-                    ? "bg-text-main text-brand-yellow shadow-md scale-105"
-                    : "bg-white/60 hover:bg-white text-text-main/70 hover:text-text-main border border-black/5 hover:shadow-xs"
-                }`}
-              >
-                <span>{cat}</span>
-                <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
-                  isActive ? "bg-brand-yellow/20 text-brand-yellow" : "bg-text-main/10 text-text-main/60"
-                }`}>
-                  {count}
-                </span>
-              </button>
-            )
-          })}
-        </div>
-
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-          {filteredProjects.map((project: Project) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 max-w-5xl mx-auto">
+          {FEATURED_PROJECTS.map((project: Project) => (
             <Link
               key={project.id}
               to={`/projects/${project.id}`}
@@ -139,6 +102,16 @@ export function ProjectsPage() {
             </Link>
           ))}
         </div>
+
+        <section className="mx-auto mt-12 max-w-5xl border-t border-text-main/10 pt-8" aria-labelledby="additional-work-heading">
+          <h2 id="additional-work-heading" className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-text-main/55">Additional experience</h2>
+          {PROJECTS.filter((project) => !FEATURED_PROJECTS.some((featured) => featured.id === project.id)).map((project) => (
+            <Link key={project.id} to={`/projects/${project.id}`} className="group flex flex-col gap-3 rounded-2xl border border-black/5 bg-white/65 p-5 transition-colors hover:bg-white sm:flex-row sm:items-center sm:justify-between">
+              <div><div className="flex items-center gap-2"><h3 className="text-lg font-black text-text-main group-hover:text-text-accent">{project.title}</h3>{project.confidential && <span className="rounded-full bg-text-main px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-brand-yellow">NDA</span>}</div><p className="mt-1 max-w-2xl text-sm leading-relaxed text-text-main/70">{project.description}</p></div>
+              <span className="shrink-0 text-xs font-black uppercase tracking-wider text-text-accent">View case study →</span>
+            </Link>
+          ))}
+        </section>
 
         {/* Bottom CTA */}
         <div className="mt-20 text-center bg-white/40 backdrop-blur-md rounded-3xl p-8 sm:p-12 border border-black/5 shadow-sm max-w-2xl mx-auto space-y-4">

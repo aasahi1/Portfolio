@@ -1,6 +1,7 @@
 import { Outlet, Link } from "react-router-dom"
 import { Header } from "./sections/Header"
 import CloverFooter from "@/assets/clover-footer.svg?react"
+import HeroPattern from "@/assets/hero-bg-pattern.svg?react"
 
 export function Layout() {
   const footerLinks = [
@@ -12,9 +13,13 @@ export function Layout() {
   ]
 
   return (
-    <div className="bg-background min-h-screen flex flex-col w-full selection:bg-brand-yellow selection:text-text-main">
-      <Header />
-      <main className="relative pt-16 flex-1 w-full overflow-x-hidden flex flex-col">
+    <div className="relative isolate bg-background min-h-screen flex flex-col w-full selection:bg-brand-yellow selection:text-text-main">
+      <HeroPattern
+        aria-hidden="true"
+        className="pointer-events-none fixed z-0 top-16 right-0 h-[min(100vh,1304px)] w-[min(88vw,1145px)] opacity-45 object-cover object-right-top"
+      />
+      <div className="relative z-20"><Header /></div>
+      <main className="relative z-10 pt-16 flex-1 w-full overflow-x-hidden flex flex-col">
         <Outlet />
       </main>
       <footer className="relative z-20 w-full pt-16 pb-24 bg-text-main text-brand-yellow text-center overflow-hidden border-t border-black/10">

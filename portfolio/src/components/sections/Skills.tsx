@@ -12,10 +12,21 @@ export function Skills() {
           transform-box: fill-box;
           transform-origin: center;
           cursor: pointer;
+          animation: skill-float 5s ease-in-out infinite;
         }
         .skills-svg [id$=" logo"]:hover {
           transform: scale(1.22) translateY(-5px);
           filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.28));
+          animation-play-state: paused;
+        }
+        .skills-svg [id$=" logo"]:nth-of-type(3n) { animation-delay: -1.4s; }
+        .skills-svg [id$=" logo"]:nth-of-type(3n + 1) { animation-delay: -2.8s; }
+        @keyframes skill-float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-4px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .skills-svg [id$=" logo"] { animation: none; }
         }
       `}</style>
 
@@ -24,7 +35,7 @@ export function Skills() {
 
           {/* LEFT: Logo grid */}
           <div className="relative flex justify-center lg:justify-end order-2 lg:order-1">
-            <div className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-square flex items-center justify-center">
+            <div className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-square flex items-center justify-center rounded-[2.5rem] bg-brand-yellow/20 border border-text-main/10 shadow-xl shadow-text-main/10 p-4 sm:p-6">
               <SkillsGrid className="skills-svg w-full h-full object-contain overflow-visible" />
             </div>
           </div>
@@ -40,6 +51,13 @@ export function Skills() {
             <p className="text-[16px] sm:text-[17px] text-text-main/70 leading-relaxed max-w-[340px] font-medium mx-auto lg:mx-0">
               A toolkit that lets me take things from a vague idea all the way to something real — designed and built.
             </p>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-2 pt-3 max-w-md mx-auto lg:mx-0">
+              {['Design', 'Frontend', 'Motion', 'Prototyping'].map((label) => (
+                <span key={label} className="rounded-full border border-text-main/15 bg-background/60 px-3 py-1 text-xs font-bold uppercase tracking-wider text-text-main/70">
+                  {label}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>

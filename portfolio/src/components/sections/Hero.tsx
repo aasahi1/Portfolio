@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import LadybugTop from "@/assets/ladybug-top.svg?react"
 import LadybugBottom from "@/assets/ladybug-bottom.svg?react"
-import HeroPattern from "@/assets/hero-bg-pattern.svg?react"
 
 export function Hero() {
   const leftRef = useRef<HTMLDivElement>(null)
@@ -63,11 +62,6 @@ export function Hero() {
           transform: rotate(-25deg);
         }
       `}</style>
-
-      {/* Background */}
-      <div className="absolute inset-0 -z-10">
-        <HeroPattern className="h-full w-full object-cover" />
-      </div>
 
       <div className="relative mx-auto flex min-h-[480px] max-w-5xl items-center justify-center px-8 sm:px-12 lg:px-20">
 

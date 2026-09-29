@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 280" role="img" aria-labelledby="title desc">
+  <title id="title">Co-Connect referral and advisor matching flow</title>
+  <desc id="desc">An existing client invites a friend, the friend shares goals in a short quiz, an advisor match is made, and the advisor follows up with context.</desc>
+  <rect width="1000" height="280" rx="28" fill="#f5f7e9"/>
+  <path d="M190 139h95m150 0h95m150 0h95" stroke="#64752d" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 9"/>
+  <g font-family="Arial,sans-serif" text-anchor="middle" fill="#1c2633">
+    <g transform="translate(115 138)"><circle r="64" fill="#fff" stroke="#64752d" stroke-width="3"/><circle cy="-15" r="15" fill="#c4d27c"/><path d="M-27 27c4-33 50-33 54 0" fill="#c4d27c"/><text y="91" font-size="17" font-weight="700">Client invite</text><text y="114" font-size="13" fill="#586170">Share with a friend</text></g>
+    <g transform="translate(360 138)"><rect x="-70" y="-62" width="140" height="124" rx="18" fill="#fff" stroke="#64752d" stroke-width="3"/><path d="M-42-25h84M-42 0h65M-42 25h48" stroke="#c4d27c" stroke-width="9" stroke-linecap="round"/><text y="91" font-size="17" font-weight="700">Lifestyle quiz</text><text y="114" font-size="13" fill="#586170">Goals &amp; preferences</text></g>
+    <g transform="translate(605 138)"><circle r="64" fill="#fff" stroke="#64752d" stroke-width="3"/><circle cy="-17" r="20" fill="#c4d27c"/><path d="M-35 33c4-40 66-40 70 0" fill="#c4d27c"/><path d="m22-25 8 9 17-20" fill="none" stroke="#64752d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><text y="91" font-size="17" font-weight="700">Advisor match</text><text y="114" font-size="13" fill="#586170">A more relevant fit</text></g>
+    <g transform="translate(850 138)"><rect x="-70" y="-62" width="140" height="124" rx="18" fill="#fff" stroke="#64752d" stroke-width="3"/><path d="M-38-25h76v49h-76zM-38-25l38 30 38-30" fill="none" stroke="#c4d27c" stroke-width="6" stroke-linejoin="round"/><text y="91" font-size="17" font-weight="700">Warm handoff</text><text y="114" font-size="13" fill="#586170">Advisor has context</text></g>
+  </g>
+</svg>

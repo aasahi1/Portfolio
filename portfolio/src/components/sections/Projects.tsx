@@ -12,7 +12,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, X, ZoomIn, ArrowRight, LockKeyhole } from "lucide-react"
 import CloverSmall from "@/assets/clover-small.svg?react"
-import { PROJECTS, type Project } from "@/data/projects"
+import { FEATURED_PROJECTS, type Project } from "@/data/projects"
 
 export function Projects() {
   const [api, setApi] = React.useState<CarouselApi>()
@@ -31,10 +31,10 @@ export function Projects() {
       <div className="container mx-auto px-6 sm:px-10 lg:px-20">
         <div className="text-center mb-10 space-y-3">
           <h2 className="text-[48px] sm:text-[64px] font-black text-text-main leading-none">
-            Past Projects<span className="text-text-accent">.</span>
+            Selected Product Work<span className="text-text-accent">.</span>
           </h2>
           <p className="max-w-xl mx-auto text-text-main/75 text-base sm:text-lg font-medium leading-relaxed">
-            A selection of recent work across design, UX research, and creative technology.
+            Product concepts shaped from the user need through the complete experience.
           </p>
         </div>
 
@@ -45,7 +45,7 @@ export function Projects() {
             opts={{ loop: true, align: "center" }}
           >
             <CarouselContent className="-ml-4 overflow-visible">
-              {PROJECTS.map((project, index) => (
+              {FEATURED_PROJECTS.map((project, index) => (
                 <CarouselItem
                   key={project.id}
                   className="pl-4 basis-[88%] sm:basis-[75%] md:basis-[560px] overflow-visible"
@@ -99,7 +99,7 @@ export function Projects() {
           </Carousel>
 
           <div className="flex justify-center items-center gap-2 mt-5">
-            {PROJECTS.map((_, i) => (
+            {FEATURED_PROJECTS.map((_, i) => (
               <button
                 key={i}
                 onClick={() => api?.scrollTo(i)}
