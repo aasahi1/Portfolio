@@ -25,16 +25,9 @@ export function About() {
 
             <div className="space-y-5 text-text-main text-[16px] sm:text-[17px] leading-[1.7] font-medium">
               <p>
-                I'm a Digital Arts student at the University of Waterloo with minors in Computing and Psychology —
-                which is a fancy way of saying I think about people, then build things for them. I work across
-                design, front-end development, and creative technology, and I care a lot about the space where
-                all three meet.
-              </p>
+              I’m a Fine Arts student at the University of Waterloo, specializing in Digital Arts with minors in Computing and Psychology. I like understanding what people need, turning messy problems into clear, usable solutions, and then building them.              </p>
               <p>
-                I've shipped React apps for health-tech startups, won design sprints, and had an interactive
-                installation exhibited at THEMUSEUM in Kitchener. Outside of screens, I paint — acrylics,
-                watercolours, gouache — and I think it makes me a better designer every time.
-              </p>
+              My work spans product design, front-end development, and traditional art. I’ve designed apps and websites for startups, won designathons, and exhibited interactive installations in galleries. When I’m not designing or coding, I’m usually painting or making. Acrylics, Sculptures, trinkets for my family, whatever I can get my hands on!              </p>
             </div>
 
             <div className="flex flex-wrap gap-3 pt-2 justify-center lg:justify-start">

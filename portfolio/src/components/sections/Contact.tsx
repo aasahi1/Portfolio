@@ -136,11 +136,7 @@ export function Contact() {
           {/* Left */}
           <div className="space-y-10 lg:pt-6">
             <div className="space-y-3">
-              <h2 className="text-[40px] sm:text-[52px] font-black text-text-accent leading-[1]">Let's Chat!!</h2>
-              <p className="text-text-main/75 text-[15px] leading-relaxed max-w-[440px]">
-                I'm always excited to take on new challenges and collaborate with passionate teams.
-                Whether you have a project in mind or just want to chat about design, I'd love to hear from you.
-              </p>
+              <h2 className="text-[40px] sm:text-[52px] font-black text-text-accent leading-[1]">Let's Chat!</h2>
             </div>
 
             <div className="space-y-3">

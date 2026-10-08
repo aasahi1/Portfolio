@@ -49,8 +49,7 @@ export function Skills() {
               <span className="transition-colors duration-300 group-hover:text-text-accent">Tools</span>
             </h2>
             <p className="text-[16px] sm:text-[17px] text-text-main/70 leading-relaxed max-w-[340px] font-medium mx-auto lg:mx-0">
-              A toolkit that lets me take things from a vague idea all the way to something real — designed and built.
-            </p>
+            The tools that let me take things from vague ideas into something real, designed and built.            </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-2 pt-3 max-w-md mx-auto lg:mx-0">
               {['Design', 'Frontend', 'Motion', 'Prototyping'].map((label) => (
                 <span key={label} className="rounded-full border border-text-main/15 bg-background/60 px-3 py-1 text-xs font-bold uppercase tracking-wider text-text-main/70">

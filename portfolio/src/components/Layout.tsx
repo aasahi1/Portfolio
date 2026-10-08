@@ -29,7 +29,7 @@ export function Layout() {
             Amna Sahi<span className="text-text-accent">.</span>
           </Link>
           <p className="text-xs sm:text-sm font-medium opacity-80 max-w-md mx-auto">
-            © 2026 Amna Sahi. Built with luck, code, and design intertwined.
+            © 2026 Amna Sahi. Built with code, design, and luck intertwined.
           </p>
           <div className="flex flex-wrap justify-center gap-5 sm:gap-7 pt-4">
             {footerLinks.map((item) => (

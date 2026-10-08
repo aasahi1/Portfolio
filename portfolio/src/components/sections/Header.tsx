@@ -9,7 +9,7 @@ export function Header() {
   const location = useLocation()
   
   const navItems = [
-    { name: "Portfolio", path: "/projects" },
+    { name: "Projects", path: "/projects" },
     { name: "Art", path: "/art" },
     { name: "Contact", path: "/contact" },
   ]
