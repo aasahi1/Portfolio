@@ -5,9 +5,8 @@ import HeroPattern from "@/assets/hero-bg-pattern.svg?react"
 
 export function Layout() {
   const footerLinks = [
-    { name: "About", path: "/#about" },
-    { name: "Portfolio", path: "/projects" },
-    { name: "Skills", path: "/#skills" },
+    { name: "About", path: "/about" },
+    { name: "Projects", path: "/projects" },
     { name: "Art", path: "/art" },
     { name: "Contact", path: "/contact" },
   ]
@@ -16,30 +15,30 @@ export function Layout() {
     <div className="relative isolate bg-background min-h-screen flex flex-col w-full selection:bg-brand-yellow selection:text-text-main">
       <HeroPattern
         aria-hidden="true"
-        className="pointer-events-none fixed z-0 top-16 right-0 h-[min(100vh,1304px)] w-[min(88vw,1145px)] opacity-45 object-cover object-right-top"
+        className="pointer-events-none fixed z-0 top-16 right-0 h-[min(100vh,1304px)] w-[min(88vw,1145px)] opacity-20 object-cover object-right-top"
       />
       <div className="relative z-20"><Header /></div>
       <main className="relative z-10 pt-16 flex-1 w-full overflow-x-hidden flex flex-col">
         <Outlet />
       </main>
-      <footer className="relative z-20 w-full pt-16 pb-24 bg-text-main text-brand-yellow text-center overflow-hidden border-t border-black/10">
+      <footer className="relative z-20 w-full pt-10 pb-12 bg-text-main text-brand-yellow text-center overflow-hidden border-t border-black/10">
         <CloverFooter className="absolute bottom-[-30px] left-[-30px] w-56 h-56 opacity-10 pointer-events-none" />
         <div className="container mx-auto px-6 relative z-10 space-y-4">
-          <Link to="/" className="inline-block text-3xl sm:text-4xl font-black tracking-tight hover:text-white transition-colors">
+          <Link to="/" className="inline-block text-2xl font-black tracking-tight hover:text-white transition-colors">
             Amna Sahi<span className="text-text-accent">.</span>
           </Link>
-          <p className="text-xs sm:text-sm font-medium opacity-80 max-w-md mx-auto">
+          <p className="text-[11px] sm:text-xs font-medium opacity-80 max-w-md mx-auto">
             © 2026 Amna Sahi. Built with code, design, and luck intertwined.
           </p>
           <div className="flex flex-wrap justify-center gap-5 sm:gap-7 pt-4">
             {footerLinks.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.path}
+                to={item.path}
                 className="text-xs font-bold uppercase tracking-widest opacity-75 hover:opacity-100 hover:text-white transition-all py-1"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

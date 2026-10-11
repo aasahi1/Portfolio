@@ -25,9 +25,14 @@ export function About() {
 
             <div className="space-y-5 text-text-main text-[16px] sm:text-[17px] leading-[1.7] font-medium">
               <p>
-              I’m a Fine Arts student at the University of Waterloo, specializing in Digital Arts with minors in Computing and Psychology. I like understanding what people need, turning messy problems into clear, usable solutions, and then building them.              </p>
+              I’m a Fine Arts student at the University of Waterloo, specializing in Digital Arts with minors in Computing and Psychology. I like understanding what people need, turning messy problems into clear, usable solutions, and then building them.
+              </p>
               <p>
-              My work spans product design, front-end development, and traditional art. I’ve designed apps and websites for startups, won designathons, and exhibited interactive installations in galleries. When I’m not designing or coding, I’m usually painting or making. Acrylics, Sculptures, trinkets for my family, whatever I can get my hands on!              </p>
+              My work sits somewhere between product design, front-end development, and creative technology. I’ve designed apps and websites for startups, won designathons, and exhibited interactive installations in galleries. I’m especially interested in products where good design isn’t just about how something looks, but how it thinks, works, and makes people feel.
+              </p>
+              <p>
+                When I’m not designing or coding, I’m usually painting or making. Acrylics, Sculptures, trinkets for my family, whatever I can get my hands on. It’s taught me to pay attention to composition, detail, and the little things that make something feel right.
+              </p>
             </div>
 
             <div className="flex flex-wrap gap-3 pt-2 justify-center lg:justify-start">
@@ -96,7 +101,7 @@ export function About() {
                 />
               </div>
               {/* Small Ladybug on the corner matching clover size */}
-              <div className="absolute bottom-0 right-0 w-6 h-6 sm:w-7 sm:h-7 z-30 pointer-events-none transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110">
+              <div className="ladybug-interactive absolute bottom-0 right-0 w-6 h-6 sm:w-7 sm:h-7 z-30 pointer-events-auto">
                 <LadybugIcon className="w-full h-full drop-shadow-md rotate-[25deg]" />
               </div>
             </div>

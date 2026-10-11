@@ -8,6 +8,11 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { ExternalLink, ArrowLeft, ZoomIn, X, Sparkles, ClipboardCheck, Handshake, TrendingUp, Accessibility, Brain, MonitorSmartphone, LockKeyhole } from "lucide-react"
 import { Ladybugs } from "@/components/Ladybugs"
 import CloverSmall from "@/assets/clover-small.svg?react"
+import { IcmmsCaseStudy } from "@/pages/case-studies/IcmmsCaseStudy"
+import { CoConnectCaseStudy } from "@/pages/case-studies/CoConnectCaseStudy"
+import { LurnCaseStudy } from "@/pages/case-studies/LurnCaseStudy"
+import { HabitAtCaseStudy } from "@/pages/case-studies/HabitAtCaseStudy"
+import { GrandmasBakeryCaseStudy } from "@/pages/case-studies/GrandmasBakeryCaseStudy"
 
 export function ProjectDetailPage() {
   const { id } = useParams<{ id: string }>()
@@ -27,6 +32,12 @@ export function ProjectDetailPage() {
       </div>
     )
   }
+
+  if (project.id === "icmms") return <IcmmsCaseStudy />
+  if (project.id === "co-connect") return <CoConnectCaseStudy />
+  if (project.id === "lurn") return <LurnCaseStudy />
+  if (project.id === "habitat") return <HabitAtCaseStudy />
+  if (project.id === "grandmas-bakery") return <GrandmasBakeryCaseStudy />
 
   const galleryItems = project.id === "lurn"
     ? [

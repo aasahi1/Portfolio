@@ -111,9 +111,33 @@ export const PROJECTS: Project[] = [
     linkText: "Visit Live Product (Login Required)",
     confidential: true,
   },
+  {
+    id: "grandmas-bakery",
+    title: "Grandma’s Bakery",
+    category: "UX / Product",
+    description: "An operations concept connecting bakery inventory, ingredient costs, sales, and weekly specials.",
+    longDescription: "A five-hour hackathon concept for making small-bakery operations easier to review. The available project brief describes inventory, supplier costs, recipes, sales, purchasing, and specials; sales data is illustrative and no payment-terminal integration is documented.",
+    role: "Lead Designer & Front-end Developer",
+    tools: ["Figma", "React", "Python", "Illustrator", "Canva"],
+    timeline: "5-hour hackathon",
+    tags: ["Product Design", "Small Business", "Rapid Prototyping"],
+    image: "/grandmas-bakery/dashboard.svg",
+    imageAlt: "Grandma’s Bakery operations dashboard design",
+    gallery: [
+      { url: "/grandmas-bakery/dashboard.svg", alt: "Bakery operations dashboard with sales and tasks" },
+      { url: "/grandmas-bakery/task-dashboard.svg", alt: "Bakery task dashboard with operational actions" },
+      { url: "/grandmas-bakery/inventory-expiry.svg", alt: "Bakery inventory and ingredient expiry screen" },
+      { url: "/grandmas-bakery/recipes.svg", alt: "Bakery recipe and ingredient cost screen" },
+      { url: "/grandmas-bakery/flavour-week.svg", alt: "Bakery flavour of the week concept" },
+      { url: "/grandmas-bakery/sales-and-votes.svg", alt: "Bakery sales and flavour voting screen" },
+    ],
+    color: "bg-[#fff5e7]",
+    link: "https://aasahi1.github.io/Ingredient-Cost-Tracking-Interface/#main",
+    linkText: "Open live prototype",
+  },
 ]
 
-// Lead with the three projects that best show playful systems and connected user journeys.
-export const FEATURED_PROJECTS = ["habitat", "lurn", "co-connect"].flatMap((id) =>
+// Order the full case-study set by the portfolio's current storytelling priority.
+export const FEATURED_PROJECTS = ["icmms", "co-connect", "lurn", "habitat", "grandmas-bakery"].flatMap((id) =>
   PROJECTS.filter((project) => project.id === id),
 )

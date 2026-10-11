@@ -1,0 +1,71 @@
+.local-editor-launch,
+.local-editor-panel {
+  position: fixed;
+  z-index: 1000;
+  font-family: inherit;
+}
+
+.local-editor-launch {
+  right: 18px;
+  bottom: 18px;
+  min-height: 42px;
+  padding: 0 17px;
+  border: 0;
+  border-radius: 999px;
+  background: #220500;
+  color: #F9F8ED;
+  box-shadow: 0 4px 18px #22050033;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.local-editor-panel {
+  right: 18px;
+  bottom: 72px;
+  width: min(340px, calc(100vw - 32px));
+  padding: 16px;
+  border: 1px solid #2B120A33;
+  border-radius: 15px;
+  background: #F9F8ED;
+  color: #2B120A;
+  box-shadow: 0 8px 28px #22050033;
+  font-size: 13px;
+}
+
+.local-editor-panel header,
+.local-editor-panel footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.local-editor-panel header span,
+.local-editor-hint,
+.local-editor-message,
+.local-editor-selection small { font-size: 11px; }
+.local-editor-hint { line-height: 1.5; }
+.local-editor-selection { display: grid; gap: 7px; margin: 13px 0; font-weight: 700; }
+.local-editor-selection select { width: 100%; min-height: 36px; font: inherit; }
+.local-editor-selection input { width: 100%; accent-color: #AF2500; }
+.local-editor-panel button { min-height: 34px; padding: 0 12px; border: 1px solid #2B120A44; border-radius: 8px; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.local-editor-panel button:last-child { background: #220500; color: #F9F8ED; }
+.local-editor-panel button:disabled { opacity: .45; cursor: default; }
+.local-editor-root.is-editing [data-local-edit-key] { cursor: text; outline: 1px dashed transparent; outline-offset: 3px; }
+.local-editor-root.is-editing [data-local-edit-key]:hover,
+.local-editor-root.is-editing [data-local-edit-key][contenteditable="true"] { outline-color: #AF2500; }
+.local-editor-root.is-editing img[data-local-image-key] { cursor: pointer; outline: 1px dashed transparent; outline-offset: 3px; }
+.local-editor-root.is-editing img[data-local-image-key]:hover { outline-color: #AF2500; }
+.local-editor-root.is-editing .co-connect-page { padding-bottom: 4.5rem; }
+.local-editor-root .co-connect-section { padding-block: var(--cc-editor-section-gap, 48px); }
+
+@media (max-width: 600px) {
+  .local-editor-launch { right: 12px; bottom: 12px; }
+  .local-editor-panel { right: 12px; bottom: 64px; }
+}
+
+@media (max-width: 680px) {
+  .local-editor-root .co-connect-section { padding-block: calc(var(--cc-editor-section-gap, 48px) * .708333); }
+}

@@ -9,6 +9,7 @@ export function Header() {
   const location = useLocation()
   
   const navItems = [
+    { name: "About", path: "/about" },
     { name: "Projects", path: "/projects" },
     { name: "Art", path: "/art" },
     { name: "Contact", path: "/contact" },
@@ -20,13 +21,13 @@ export function Header() {
   }, [location.pathname])
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full bg-brand-yellow shadow-md">
-      <div className="container mx-auto flex h-16 items-center justify-between px-6 sm:px-12">
+    <header className="fixed top-0 left-0 z-50 w-full bg-brand-yellow shadow-sm">
+      <div className="container relative mx-auto flex h-16 max-w-[1280px] items-center justify-between px-5 md:px-[52px]">
         
         {/* --- LOGO / NAME --- */}
         <Link 
           to="/" 
-          className="group text-3xl sm:text-4xl font-black text-text-main tracking-tight transition-none"
+          className="group text-[26px] md:text-[34px] font-black text-text-main tracking-tight transition-none"
         >
           <span className="group-hover:text-text-accent transition-colors duration-300">
             Amna Sahi
@@ -35,14 +36,14 @@ export function Header() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+        <nav className="hidden items-center gap-4 md:flex xl:absolute xl:left-[523px] xl:gap-[35px]">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path || (item.path === "/projects" && location.pathname.startsWith("/projects"))
             return (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`text-base lg:text-lg font-black tracking-tight transition-colors ${
+                className={`text-sm font-bold tracking-tight transition-colors xl:text-[18px] ${
                   isActive ? "text-text-accent" : "text-text-main hover:text-text-accent"
                 }`}
               >
@@ -56,27 +57,29 @@ export function Header() {
         <div className="flex items-center gap-4">
           <Button
             asChild
-            className="hidden sm:flex bg-text-main text-brand-yellow hover:bg-brand-yellow hover:text-text-main h-8 px-4 gap-3 font-bold rounded-sm shadow-sm transition-all"
+            className="hidden sm:flex h-[30px] w-[108px] gap-2 rounded-[7px] bg-text-main px-3 font-bold text-brand-yellow shadow-sm transition-all hover:bg-text-main/85"
           >
             <a href="/Amna_Sahi_Resume.pdf" target="_blank" rel="noopener noreferrer">
-              <ResumeIcon className="w-4 h-4" />
-              <span className="text-sm font-black">Resume</span>
+              <ResumeIcon className="h-[14px] w-[14px]" />
+              <span className="text-xs font-black">Resume</span>
             </a>
           </Button>
 
-          <button 
-            className="md:hidden text-text-main p-1 cursor-pointer"
+          <button
+            className="relative z-[60] flex h-10 w-10 shrink-0 items-center justify-center text-text-main md:hidden"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
           >
-            {isOpen ? <X size={32} /> : <Menu size={32} />}
+            {isOpen ? <X className="block" size={32} strokeWidth={2.5} /> : <Menu className="block" size={32} strokeWidth={2.5} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="md:hidden absolute top-16 left-0 w-full bg-brand-yellow border-t border-text-main/10 shadow-xl py-6 px-6 space-y-4 flex flex-col animate-in slide-in-from-top-4 duration-200">
+        <div id="mobile-navigation" className="md:hidden absolute top-16 left-0 w-full bg-brand-yellow border-t border-text-main/10 shadow-xl py-6 px-6 space-y-4 flex flex-col animate-in slide-in-from-top-4 duration-200">
           {navItems.map((item) => (
             <Link
               key={item.name}
