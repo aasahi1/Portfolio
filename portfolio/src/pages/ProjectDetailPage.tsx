@@ -151,7 +151,7 @@ export function ProjectDetailPage() {
             <Link to="/projects">All Projects</Link>
           </Button>
           <Button asChild className="bg-text-accent text-white hover:bg-text-accent/90 rounded-full font-bold px-7 h-11 shadow-md">
-            <Link to="/contact">Get in Touch</Link>
+            <a href="mailto:aasahi@uwaterloo.ca">Get in Touch</a>
           </Button>
         </div>
 

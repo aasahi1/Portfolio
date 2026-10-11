@@ -8,7 +8,6 @@ export function Layout() {
     { name: "About", path: "/about" },
     { name: "Projects", path: "/projects" },
     { name: "Art", path: "/art" },
-    { name: "Contact", path: "/contact" },
   ]
 
   return (

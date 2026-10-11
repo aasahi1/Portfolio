@@ -12,7 +12,6 @@ export function Header() {
     { name: "About", path: "/about" },
     { name: "Projects", path: "/projects" },
     { name: "Art", path: "/art" },
-    { name: "Contact", path: "/contact" },
   ]
 
   // Scroll to top on route change

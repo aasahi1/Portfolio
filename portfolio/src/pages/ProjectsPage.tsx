@@ -122,12 +122,12 @@ export function ProjectsPage() {
             Whether you need UX design, front-end implementation, or creative technology, I'd love to chat.
           </p>
           <div className="pt-2">
-            <Link
-              to="/contact"
+            <a
+              href="mailto:aasahi@uwaterloo.ca"
               className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-text-main text-brand-yellow hover:bg-brand-yellow hover:text-text-main font-black text-sm tracking-wide shadow-md transition-all hover:-translate-y-0.5"
             >
               Get in Touch
-            </Link>
+            </a>
           </div>
         </div>
 
