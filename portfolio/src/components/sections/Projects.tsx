@@ -31,13 +31,13 @@ export function Projects() {
 }
 
 function ProjectFeature({ project, reverse }: { project: Project; reverse: boolean }) {
-  const preview = project.id === "habitat" ? project.gallery[1] : project.gallery[0]
+  const preview = project.gallery[0]
   const image = preview?.url ?? project.image
   const imageAlt = preview?.alt ?? project.imageAlt
 
   return (
     <article className={`grid overflow-hidden rounded-[20px] border border-text-main/10 bg-paper shadow-sm md:min-h-[350px] md:grid-cols-2 ${reverse ? "md:[&>a]:order-2 md:[&>div]:order-1" : ""}`}>
-      <Link to={`/projects/${project.id}`} aria-label={`Read the ${project.title} case study`} className={`group flex min-h-[250px] items-center justify-center overflow-hidden p-6 sm:p-10 ${project.color}`}>
+      <Link to={`/projects/${project.id}`} aria-label={`Read the ${project.title} case study`} className="group flex min-h-[250px] items-center justify-center overflow-hidden bg-transparent p-6 sm:p-10">
         <img src={image} alt={imageAlt} className="max-h-[300px] w-full object-contain transition-transform duration-300 group-hover:scale-[1.03]" />
       </Link>
       <div className={`flex flex-col justify-center p-6 sm:p-9 lg:p-12 ${reverse ? "bg-paper text-text-main" : "bg-text-main text-paper"}`}>
@@ -45,7 +45,7 @@ function ProjectFeature({ project, reverse }: { project: Project; reverse: boole
         <h3 className="mt-2 text-[30px] font-black leading-tight tracking-tight sm:text-[38px]">{project.title}</h3>
         <p className={`mt-3 max-w-md text-sm leading-relaxed ${reverse ? "text-text-main/75" : "text-paper/85"}`}>{project.description}</p>
         {project.role && <div className={`mt-4 border-l-2 pl-3 ${reverse ? "border-text-accent" : "border-brand-yellow"}`}>
-          <p className={`text-[9px] font-black uppercase tracking-[.16em] ${reverse ? "text-text-main/60" : "text-paper/65"}`}>My contribution</p>
+          <p className={`text-[9px] font-black uppercase tracking-[.16em] ${reverse ? "text-text-main/60" : "text-paper/65"}`}>My role</p>
           <p className="mt-1 text-xs font-semibold">{project.role}</p>
         </div>}
         <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">

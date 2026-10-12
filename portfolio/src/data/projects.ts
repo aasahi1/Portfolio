@@ -3,7 +3,7 @@ import LurnImage from "@/assets/project-lurn.png"
 export interface Project {
   id: string
   title: string
-  category: "UX / Product"
+  category?: string
   description: string
   longDescription: string
   role?: string
@@ -21,12 +21,13 @@ export interface Project {
   confidential?: boolean
 }
 
-export const PROJECTS: Project[] = [
+// Keep the full catalog here so archived case studies can be restored without rebuilding their entries.
+const PROJECT_CATALOG: Project[] = [
   {
     id: "habitat",
     title: "HabitAt",
-    category: "UX / Product",
-    description: "A shared household app that turns room-based chores into visible progress and meaningful rewards.",
+    category: "",
+    description: "A shared household app that makes managing chores fun through room-based tasks, gamified progress, and rewards.",
     longDescription: "HabitAt explores how a shared home can make chores easier to notice and coordinate. Instead of starting with a flat checklist, the experience organizes tasks by room so household members can see where help is needed. Completing a task earns points that unlock furniture for a shared virtual home; a friend map adds encouragement without making the concept depend on competition. The design challenge was to make the reward loop understandable while keeping the practical task flow at its center.",
     role: "UX Researcher & Product Designer",
     tools: ["Figma", "Prototyping", "User Flows", "Design Sprint"],
@@ -50,10 +51,10 @@ export const PROJECTS: Project[] = [
   {
     id: "co-connect",
     title: "Co-Connect",
-    category: "UX / Product",
-    description: "A referral and advisor-matching concept that helps Co-operators start more relevant conversations earlier.",
+    category: "",
+    description: "A web feature that connects clients with the right advisors through personalized recommendations and referrals.",
     longDescription: "Co-Connect was a design competition concept for Co-operators. The team explored how people could get useful advice before insurance or financial planning feels urgent. An existing client shares a short lifestyle quiz with a friend; answers about goals, life stage, and communication preferences inform an advisor match and give the advisor context for a first conversation. The concept pairs this referral flow with a FutureYou Box prize draw. My work focused on research, product framing, and the end-to-end interaction flow, from invitation through match and advisor handoff.",
-    role: "Lead UX Researcher & Product Designer",
+    role: "UX Researcher & Product Designer",
     tools: ["Figma", "Miro", "User Testing", "Design Sprint"],
     timeline: "3 weeks (design sprint winner)",
     tags: ["UX Design", "FinTech", "Design Sprint"],
@@ -74,8 +75,8 @@ export const PROJECTS: Project[] = [
   {
     id: "lurn",
     title: "LURN",
-    category: "UX / Product",
-    description: "An inclusive learning concept that breaks assignments into manageable activities and makes progress visible.",
+    category: "",
+    description: "An inclusive learning platform that transforms assignments into manageable activities, making learning more accessible and engaging for diverse learners.",
     longDescription: "LURN is an inclusive learning concept shaped around a Grade 4 learner who benefits from short, flexible activities and text or audio support. Students join a class, share their learning preferences, and see clear next steps in a personalized dashboard. Teacher and student flows connect assignments, practice, feedback, and progress. The design uses short learning cards and encouraging feedback to make the next action easier to start, while keeping teachers part of the learning loop. My role covered the product experience from learner framing and flows through interface design and prototyping.",
     role: "End-to-End Product Designer",
     tools: ["Figma", "Design Systems", "Prototyping", "UX Research"],
@@ -92,10 +93,10 @@ export const PROJECTS: Project[] = [
   {
     id: "icmms",
     title: "ICMMS",
-    category: "UX / Product",
-    description: "A responsive product website that makes a complex enterprise operations platform easier to understand.",
+    category: "",
+    description: "A product website that helps businesses explore iCMMS’s features, real-world applications, pricing, and demos to make informed decisions about adoption.",
     longDescription: "During my co-op at Alectify, I designed and built the ICMMS website from the ground up. I shaped the information architecture, responsive layouts, visual direction, interaction patterns, and website copy to explain a complex operations product with clarity. The work moved from product and audience framing through page structure, interface design, and implementation. The authenticated platform is protected by an NDA, so this case study uses original abstract visuals and discusses only my process and information Alectify has made public.",
-    role: "Website Designer & Builder",
+    role: "Lead Website Designer & Builder",
     tools: ["Figma Make", "Figma", "Responsive Design", "UX Writing"],
     timeline: "Alectify co-op term; exact length not recorded",
     tags: ["Enterprise UX", "Product Design", "NDA"],
@@ -114,7 +115,7 @@ export const PROJECTS: Project[] = [
   {
     id: "grandmas-bakery",
     title: "Grandma’s Bakery",
-    category: "UX / Product",
+    category: "",
     description: "An operations concept connecting bakery inventory, ingredient costs, sales, and weekly specials.",
     longDescription: "A five-hour hackathon concept for making small-bakery operations easier to review. The available project brief describes inventory, supplier costs, recipes, sales, purchasing, and specials; sales data is illustrative and no payment-terminal integration is documented.",
     role: "Lead Designer & Front-end Developer",
@@ -137,7 +138,9 @@ export const PROJECTS: Project[] = [
   },
 ]
 
+export const PROJECTS: Project[] = PROJECT_CATALOG.filter((project) => !["habitat", "grandmas-bakery"].includes(project.id))
+
 // Order the full case-study set by the portfolio's current storytelling priority.
-export const FEATURED_PROJECTS = ["icmms", "co-connect", "lurn", "habitat", "grandmas-bakery"].flatMap((id) =>
+export const FEATURED_PROJECTS = ["icmms", "co-connect", "lurn"].flatMap((id) =>
   PROJECTS.filter((project) => project.id === id),
 )

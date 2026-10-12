@@ -22,11 +22,8 @@ export function ProjectsPage() {
             Product Design · Selected Work
           </div>
           <h1 className="text-[48px] sm:text-[64px] font-black text-text-main leading-none tracking-tight">
-            Product design, end to end<span className="text-text-accent">.</span>
+            Product design,<span className="text-text-accent"></span>
           </h1>
-          <p className="text-text-main/80 text-base sm:text-lg font-medium leading-relaxed max-w-2xl mx-auto">
-            From motivating everyday habits to making complex systems easier to understand, these case studies show how I move from a user need to a considered product experience.
-          </p>
         </div>
 
         {/* Projects Grid */}
@@ -38,7 +35,7 @@ export function ProjectsPage() {
               className="group relative flex flex-col rounded-3xl bg-white/80 shadow-md border border-black/5 overflow-hidden transition-all duration-400 hover:-translate-y-2 hover:shadow-2xl hover:bg-white"
             >
               {/* Image Preview Banner */}
-              <div className={`relative w-full aspect-[4/3] flex items-center justify-center overflow-hidden p-6 sm:p-8 ${project.color} transition-colors duration-500`}>
+              <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden bg-transparent p-6 transition-colors duration-500 sm:p-8">
                 <img
                   src={project.image}
                   alt={project.imageAlt || project.title}
@@ -47,11 +44,13 @@ export function ProjectsPage() {
                 <CloverSmall className="absolute top-4 right-4 w-7 h-7 opacity-25 text-text-main group-hover:rotate-45 group-hover:opacity-40 transition-all duration-500" />
                 
                 {/* Category Pill Tag */}
-                <div className="absolute bottom-3 left-4">
-                  <span className="px-3 py-1 rounded-full bg-white/85 backdrop-blur-md text-text-main text-[11px] font-black uppercase tracking-wider shadow-xs border border-black/5">
-                    {project.category}
-                  </span>
-                </div>
+                {project.category && (
+                  <div className="absolute bottom-3 left-4">
+                    <span className="px-3 py-1 rounded-full bg-white/85 backdrop-blur-md text-text-main text-[11px] font-black uppercase tracking-wider shadow-xs border border-black/5">
+                      {project.category}
+                    </span>
+                  </div>
+                )}
                 {project.confidential && (
                   <span className="absolute bottom-3 right-4 inline-flex items-center gap-1.5 rounded-full bg-text-main px-3 py-1 text-[11px] font-black uppercase tracking-wider text-brand-yellow shadow-sm">
                     <LockKeyhole className="h-3 w-3" /> NDA
@@ -103,7 +102,7 @@ export function ProjectsPage() {
           ))}
         </div>
 
-        <section className="mx-auto mt-12 max-w-5xl border-t border-text-main/10 pt-8" aria-labelledby="additional-work-heading">
+        {PROJECTS.some((project) => !FEATURED_PROJECTS.some((featured) => featured.id === project.id)) && <section className="mx-auto mt-12 max-w-5xl border-t border-text-main/10 pt-8" aria-labelledby="additional-work-heading">
           <h2 id="additional-work-heading" className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-text-main/55">Additional experience</h2>
           {PROJECTS.filter((project) => !FEATURED_PROJECTS.some((featured) => featured.id === project.id)).map((project) => (
             <Link key={project.id} to={`/projects/${project.id}`} className="group flex flex-col gap-3 rounded-2xl border border-black/5 bg-white/65 p-5 transition-colors hover:bg-white sm:flex-row sm:items-center sm:justify-between">
@@ -111,7 +110,7 @@ export function ProjectsPage() {
               <span className="shrink-0 text-xs font-black uppercase tracking-wider text-text-accent">View case study →</span>
             </Link>
           ))}
-        </section>
+        </section>}
 
         {/* Bottom CTA */}
         <div className="mt-20 text-center bg-white/40 backdrop-blur-md rounded-3xl p-8 sm:p-12 border border-black/5 shadow-sm max-w-2xl mx-auto space-y-4">
@@ -119,7 +118,7 @@ export function ProjectsPage() {
             Interested in collaborating?
           </h3>
           <p className="text-text-main/75 text-sm sm:text-base font-medium">
-            Whether you need UX design, front-end implementation, or creative technology, I'd love to chat.
+            Whether you need a UX designer, front-end developer, or an overall creative, I'd love to chat!
           </p>
           <div className="pt-2">
             <a

@@ -1,4 +1,3 @@
-import liveUiEditorBabelPlugin from './live-ui-editor.babel-plugin.js';
 import path from "path"
 import fs from "node:fs/promises"
 import { isIP } from "node:net"
@@ -69,7 +68,7 @@ function isEditorData(value: unknown, assets: string[]): value is { text: Record
 }
 
 export default defineConfig({
-  plugins: [react({ babel: { plugins: [liveUiEditorBabelPlugin] } }), tailwindcss(), svgr(), localEditorPlugin()],
+  plugins: [react(), tailwindcss(), svgr(), localEditorPlugin()],
   server: { host: "127.0.0.1" },
   resolve: {
     alias: {

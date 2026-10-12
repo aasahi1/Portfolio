@@ -90,7 +90,7 @@ export function ProjectDetailPage() {
         ) : project.id === "lurn" ? (
           <LurnPhotoCarousel />
         ) : (
-          <div className={`relative w-full rounded-3xl overflow-hidden p-8 sm:p-14 lg:p-16 flex items-center justify-center shadow-xl ${project.color} border border-black/5`}>
+          <div className="relative flex w-full items-center justify-center overflow-hidden rounded-3xl bg-transparent p-8 shadow-none sm:p-14 lg:p-16">
             <img
               src={project.image}
               alt={project.imageAlt || project.title}
@@ -128,7 +128,7 @@ export function ProjectDetailPage() {
               <div
                 key={idx}
                 onClick={() => setZoomedImage(img)}
-                className="group relative aspect-video bg-white rounded-2xl overflow-hidden border border-black/5 shadow-md hover:shadow-2xl transition-all duration-300 cursor-zoom-in flex items-center justify-center p-3"
+                className="group relative flex aspect-video cursor-zoom-in items-center justify-center overflow-hidden rounded-2xl bg-transparent p-3 transition-all duration-300"
               >
                 <img
                   src={img.url}
@@ -402,9 +402,6 @@ function HabitAtPhotoCarousel() {
                   alt={photo.alt}
                   className="h-full w-full object-contain"
                 />
-                <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-6 pb-5 pt-14 text-sm font-bold text-white sm:px-8 sm:pb-7">
-                  {photo.caption}
-                </figcaption>
               </figure>
             </CarouselItem>
           ))}
@@ -476,8 +473,8 @@ const LURN_PHOTOS = [
 
 function LurnPhotoCarousel() {
   return (
-    <section className="relative overflow-hidden rounded-3xl border border-black/5 bg-[#fff8ed] shadow-xl">
-      <Carousel opts={{ loop: true }} className="w-full"><CarouselContent className="ml-0">{LURN_PHOTOS.map((photo) => <CarouselItem key={photo.src} className="pl-0"><figure className="relative flex aspect-[16/10] w-full flex-col items-center justify-center overflow-hidden bg-[#fff8ed] p-5 sm:aspect-[2/1] sm:p-8"><img src={photo.src} alt={photo.alt} className="h-full min-h-0 w-full flex-1 object-contain" /><figcaption className="pt-2 text-center text-sm font-bold text-text-main/75">{photo.caption}</figcaption></figure></CarouselItem>)}</CarouselContent><CarouselPrevious className="left-4 border-none bg-white/90 text-text-main shadow-lg hover:bg-white sm:left-6" /><CarouselNext className="right-4 border-none bg-white/90 text-text-main shadow-lg hover:bg-white sm:right-6" /></Carousel>
+    <section className="relative overflow-hidden rounded-3xl border border-black/5 bg-transparent shadow-none">
+      <Carousel opts={{ loop: true }} className="w-full"><CarouselContent className="ml-0">{LURN_PHOTOS.map((photo) => <CarouselItem key={photo.src} className="pl-0"><figure className="relative flex aspect-[16/10] w-full flex-col items-center justify-center overflow-hidden bg-transparent p-5 sm:aspect-[2/1] sm:p-8"><img src={photo.src} alt={photo.alt} className="h-full min-h-0 w-full flex-1 object-contain" /></figure></CarouselItem>)}</CarouselContent><CarouselPrevious className="left-4 border-none bg-white/90 text-text-main shadow-lg hover:bg-white sm:left-6" /><CarouselNext className="right-4 border-none bg-white/90 text-text-main shadow-lg hover:bg-white sm:right-6" /></Carousel>
     </section>
   )
 }
@@ -516,14 +513,13 @@ const CO_CONNECT_PHOTOS = [
 
 function CoConnectPhotoCarousel() {
   return (
-    <section className="relative overflow-hidden rounded-3xl border border-black/5 bg-[#e8f1f8] shadow-xl">
+    <section className="relative overflow-hidden rounded-3xl border border-black/5 bg-transparent shadow-none">
       <Carousel opts={{ loop: true }} className="w-full">
         <CarouselContent className="ml-0">
           {CO_CONNECT_PHOTOS.map((photo) => (
             <CarouselItem key={photo.src} className="pl-0">
-              <figure className="relative flex aspect-[16/10] w-full flex-col items-center justify-center overflow-hidden bg-[#e8f1f8] p-5 sm:aspect-[2/1] sm:p-8">
+              <figure className="relative flex aspect-[16/10] w-full flex-col items-center justify-center overflow-hidden bg-transparent p-5 sm:aspect-[2/1] sm:p-8">
                 <img src={photo.src} alt={photo.alt} className="h-full min-h-0 w-full flex-1 object-contain" />
-                <figcaption className="pt-2 text-center text-sm font-bold text-text-main/75">{photo.caption}</figcaption>
               </figure>
             </CarouselItem>
           ))}
