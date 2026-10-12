@@ -150,7 +150,7 @@
   .lurn-hero { gap: 1.25rem; }
   .lurn-hero h1 { font-size: clamp(3.1rem,17vw,4.5rem); }
   .lurn-meta { gap: .8rem; margin-top: 1.4rem; }
-  .lurn-section { padding: 3.75rem 0; }
+  .lurn-section { padding: 3rem 0; }
   .lurn-section-heading { margin-bottom: 1.5rem; }
   .lurn-section-heading h2 { font-size: clamp(2rem,10vw,3rem); }
   .lurn-research { margin-top: 1.8rem; }

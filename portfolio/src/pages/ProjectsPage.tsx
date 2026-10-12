@@ -6,11 +6,11 @@ import { ArrowUpRight, LockKeyhole } from "lucide-react"
 
 export function ProjectsPage() {
   return (
-    <div className="relative isolate w-full py-16 md:py-24 bg-background overflow-hidden flex-1">
+    <div className="relative isolate w-full pt-8 pb-16 md:pt-12 md:pb-20 bg-background overflow-hidden flex-1">
       <div className="container mx-auto px-6 sm:px-10 lg:px-20 relative z-10">
         
         {/* Page Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-9 sm:mb-10 space-y-4">
           <div className="flex items-center justify-center gap-3">
             <h1 className="text-[48px] sm:text-[64px] font-black text-text-main leading-none tracking-tight">
               Projects
@@ -94,18 +94,43 @@ export function ProjectsPage() {
           ))}
         </div>
 
-        {PROJECTS.some((project) => !FEATURED_PROJECTS.some((featured) => featured.id === project.id)) && <section className="mx-auto mt-12 max-w-5xl border-t border-text-main/10 pt-8" aria-labelledby="additional-work-heading">
+        {PROJECTS.some((project) => !FEATURED_PROJECTS.some((featured) => featured.id === project.id) && project.id !== "alt-verse") && <section className="mx-auto mt-12 max-w-5xl border-t border-text-main/10 pt-8" aria-labelledby="additional-work-heading">
           <h2 id="additional-work-heading" className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-text-main/55">Additional experience</h2>
-          {PROJECTS.filter((project) => !FEATURED_PROJECTS.some((featured) => featured.id === project.id)).map((project) => (
+          <div className="grid gap-3">
+          {PROJECTS.filter((project) => !FEATURED_PROJECTS.some((featured) => featured.id === project.id) && project.id !== "alt-verse").map((project) => (
             <Link key={project.id} to={`/projects/${project.id}`} className="group flex flex-col gap-3 rounded-2xl border border-black/5 bg-[#f7f1dc] p-5 transition-colors hover:bg-[#f3e8bd] sm:flex-row sm:items-center sm:justify-between">
               <div><div className="flex items-center gap-2"><h3 className="text-lg font-black text-text-main group-hover:text-text-accent">{project.title}</h3>{project.confidential && <span className="rounded-full bg-text-main px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-brand-yellow">NDA</span>}</div><p className="mt-1 max-w-2xl text-sm leading-relaxed text-text-main/70">{project.description}</p></div>
               <span className="shrink-0 text-xs font-black uppercase tracking-wider text-text-accent">View project →</span>
             </Link>
           ))}
+          </div>
+        </section>}
+
+        {/* A distinct exhibition feature, intentionally separate from the product project cards. */}
+        {PROJECTS.find((project) => project.id === "alt-verse") && <section className="mx-auto mt-14 max-w-5xl border-t border-text-main/10 pt-8 sm:mt-16 sm:pt-10" aria-labelledby="exhibition-heading">
+          <div className="mb-5 sm:mb-6">
+            <p className="text-xs font-black uppercase tracking-[0.24em] text-text-accent">Immersive exhibition</p>
+            <h2 id="exhibition-heading" className="mt-2 text-2xl font-black tracking-tight text-text-main sm:text-3xl">Art beyond the screen</h2>
+          </div>
+          {PROJECTS.filter((project) => project.id === "alt-verse").map((project) => (
+            <Link key={project.id} to={`/projects/${project.id}`} className="site-card-motion group grid overflow-hidden rounded-3xl bg-[#f8e8f7] transition-colors hover:bg-[#f3def2] md:grid-cols-[.78fr_1.22fr]">
+              <div className="flex min-h-64 items-center justify-center bg-white/45 p-5 sm:min-h-80 sm:p-7">
+                <img src={project.image} alt={project.imageAlt || project.title} className="site-motion-image max-h-[440px] w-full rounded-md object-contain" loading="lazy" />
+              </div>
+              <div className="flex flex-col justify-center gap-4 p-6 sm:p-8 md:p-10">
+                <div className="flex items-start justify-between gap-4">
+                  <div><p className="text-xs font-black uppercase tracking-[0.2em] text-text-accent">February 2025 · THEMUSEUM</p><h3 className="mt-2 text-3xl font-black tracking-tight text-text-main sm:text-4xl">{project.title}</h3></div>
+                  <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-yellow/50 text-text-main transition-colors group-hover:bg-text-main group-hover:text-brand-yellow"><ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></span>
+                </div>
+                <p className="max-w-xl text-base font-medium leading-relaxed text-text-main/80 sm:text-lg">{project.description}</p>
+                <span className="text-xs font-black uppercase tracking-wider text-text-accent">Explore the exhibition <span aria-hidden="true">→</span></span>
+              </div>
+            </Link>
+          ))}
         </section>}
 
         {/* Bottom CTA */}
-        <div className="mt-20 text-center bg-white/40 backdrop-blur-md rounded-3xl p-8 sm:p-12 border border-black/5 shadow-sm max-w-2xl mx-auto space-y-4">
+        <div className="mt-16 sm:mt-20 text-center bg-white/40 backdrop-blur-md rounded-3xl p-7 sm:p-10 border border-black/5 shadow-sm max-w-2xl mx-auto space-y-4">
           <h3 className="text-2xl sm:text-3xl font-black text-text-main">
             Interested in collaborating?
           </h3>

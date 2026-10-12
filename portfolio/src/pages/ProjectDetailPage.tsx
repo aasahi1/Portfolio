@@ -13,6 +13,7 @@ import { CoConnectCaseStudy } from "@/pages/case-studies/CoConnectCaseStudy"
 import { LurnCaseStudy } from "@/pages/case-studies/LurnCaseStudy"
 import { HabitAtCaseStudy } from "@/pages/case-studies/HabitAtCaseStudy"
 import { GrandmasBakeryCaseStudy } from "@/pages/case-studies/GrandmasBakeryCaseStudy"
+import { AltVerseProject } from "@/pages/case-studies/AltVerseProject"
 
 export function ProjectDetailPage() {
   const { id } = useParams<{ id: string }>()
@@ -38,6 +39,7 @@ export function ProjectDetailPage() {
   if (project.id === "lurn") return <LurnCaseStudy />
   if (project.id === "habitat") return <HabitAtCaseStudy />
   if (project.id === "grandmas-bakery") return <GrandmasBakeryCaseStudy />
+  if (project.id === "alt-verse") return <AltVerseProject />
 
   const galleryItems = project.id === "lurn"
     ? [
@@ -52,13 +54,13 @@ export function ProjectDetailPage() {
     : project.gallery
 
   return (
-    <div className="project-detail-page relative isolate w-full py-12 md:py-20 bg-background overflow-hidden flex-1">
+    <div className="project-detail-page relative isolate w-full pt-8 pb-14 md:pt-12 md:pb-20 bg-background overflow-hidden flex-1">
       <Ladybugs
         leftPositionClass="md:left-[-160px] md:top-[40px] lg:left-[-200px] lg:top-[50px] xl:left-[-240px] xl:top-[60px]"
         rightPositionClass="md:top-[80px] lg:top-[100px] xl:top-[120px] -translate-y-1/2 md:right-[-180px] lg:right-[-220px] xl:right-[-260px]"
       />
 
-      <div className="container mx-auto px-6 sm:px-10 lg:px-20 max-w-5xl space-y-10 relative z-10">
+      <div className="container mx-auto px-6 sm:px-10 lg:px-20 max-w-5xl space-y-8 md:space-y-10 relative z-10">
         
         {/* Navigation Bar */}
         <div className="flex items-center justify-between">

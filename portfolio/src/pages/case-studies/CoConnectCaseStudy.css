@@ -129,7 +129,7 @@
   .cc-hero h1 { font-size: clamp(3.1rem,17vw,4.5rem); }
   .cc-hero-copy h1 { font-size: clamp(2.7rem,12vw,4.2rem); }
   .cc-meta { gap: .9rem; margin-top: 1.5rem; }
-  .cc-section { padding: 3.75rem 0; }
+  .cc-section { padding: 3rem 0; }
   .cc-section-heading { margin-bottom: 1.6rem; }
   .cc-section-heading h2 { font-size: clamp(2rem,10vw,3rem); }
   .cc-participants { gap: .4rem; }

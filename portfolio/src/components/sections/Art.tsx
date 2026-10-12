@@ -54,7 +54,7 @@ export function Art() {
   }, [api])
 
   return (
-    <section id="art" className="relative isolate w-full py-12 md:py-16 pb-24 overflow-hidden bg-background">
+    <section id="art" className="relative isolate w-full pt-12 pb-16 md:py-16 md:pb-20 overflow-hidden bg-background">
       <div className="container mx-auto px-6 sm:px-10 lg:px-20 relative z-10">
         <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-3">

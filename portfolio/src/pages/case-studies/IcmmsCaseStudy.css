@@ -160,7 +160,7 @@
   .icmms-hero { gap: 1.25rem; }
   .icmms-hero h1 { font-size: clamp(3.1rem,17vw,4.5rem); }
   .icmms-meta { gap: .8rem; margin-top: 1.4rem; }
-  .icmms-section { padding: 3.75rem 0; }
+  .icmms-section { padding: 3rem 0; }
   .icmms-section-heading { margin-bottom: 1.5rem; }
   .icmms-section-heading h2 { font-size: clamp(2rem,10vw,3rem); }
   .icmms-research-panel { grid-template-columns: 1fr; gap: 1rem; padding: 1.15rem; }
