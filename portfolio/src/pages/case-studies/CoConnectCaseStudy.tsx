@@ -55,8 +55,23 @@ const decisions = [
   },
 ]
 
-function StoryImage({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
-  return <img className={`cc-image ${className}`} src={`${asset}${src}`} alt={alt} loading="lazy" />
+const researchToDesign = [
+  {
+    question: "How might a first step feel more approachable?",
+    response: "Begin with a thoughtful referral that explains the experience and lets the recipient choose whether to continue.",
+  },
+  {
+    question: "How can people describe what matters to them?",
+    response: "Use a short goals questionnaire before advisor recommendations, so people can share priorities in their own terms.",
+  },
+  {
+    question: "What context helps someone compare advisors?",
+    response: "Show each advisor’s experience and approach alongside practical preferences like communication and meeting style.",
+  },
+]
+
+function StoryImage({ src, alt, className = "", loading = "lazy" }: { src: string; alt: string; className?: string; loading?: "eager" | "lazy" }) {
+  return <img className={`cc-image ${className}`} src={`${asset}${src}`} alt={alt} loading={loading} fetchPriority={loading === "eager" ? "high" : "auto"} />
 }
 
 export function CoConnectCaseStudy() {
@@ -80,7 +95,7 @@ export function CoConnectCaseStudy() {
             </dl>
           </div>
           <div className="cc-hero-visual">
-            <StoryImage src="co-connect-landing.jpg" alt="Co-Connect landing page introducing financial guidance and advisor matching" className="cc-hero-shot" />
+            <StoryImage src="co-connect-landing.jpg" alt="Co-Connect landing page introducing financial guidance and advisor matching" className="cc-hero-shot" loading="eager" />
           </div>
         </header>
 
@@ -108,6 +123,17 @@ export function CoConnectCaseStudy() {
           <div className="cc-question-row">
             <span>Research focus</span>
             <p>How do people choose an advisor? What information builds confidence? What makes financial guidance feel intimidating? Could a referral make it easier to begin?</p>
+          </div>
+          <div className="cc-research-bridge" aria-label="How research questions informed the experience">
+            <h3>Questions that shaped the experience</h3>
+            <div className="cc-research-bridge-grid">
+              {researchToDesign.map((item) => (
+                <article className="cc-research-bridge-card" key={item.question}>
+                  <h4>{item.question}</h4>
+                  <p>{item.response}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
