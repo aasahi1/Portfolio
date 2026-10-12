@@ -25,7 +25,7 @@ export function About() {
 
             <div className="space-y-5 text-text-main text-[16px] sm:text-[17px] leading-[1.7] font-medium">
               <p>
-              I’m a Fine Arts student at the University of Waterloo, specializing in Digital Arts with minors in Computing and Psychology. I like understanding what people need, turning messy problems into clear, usable solutions, and then building them.
+              I like understanding what people need, turning messy problems into clear, usable solutions, and then building them.
               </p>
               <p>
               My work sits somewhere between product design, front-end development, and creative technology. I’ve designed apps and websites for startups, won designathons, and exhibited interactive installations in galleries. I’m especially interested in products where good design isn’t just about how something looks, but how it thinks, works, and makes people feel.

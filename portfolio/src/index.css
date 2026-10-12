@@ -109,44 +109,50 @@ svg.ladybug-interactive .wing-right {
 }
 .ladybug-interactive svg .wing-left,
 svg.ladybug-interactive .wing-left {
-  transform-origin: 65px 110px;
+  transform-origin: 112px 120px;
 }
 .ladybug-interactive svg .wing-right,
 svg.ladybug-interactive .wing-right {
-  transform-origin: 150px 150px;
+  transform-origin: 112px 120px;
 }
-.ladybug-interactive:hover {
+.ladybug-interactive:hover,
+.ladybug-interactive:active,
+.ladybug-interactive:focus-visible {
   transform: scale(1.08);
 }
 .ladybug-interactive:hover svg .wing-left,
-svg.ladybug-interactive:hover .wing-left {
+.ladybug-interactive:active svg .wing-left,
+.ladybug-interactive:focus-visible svg .wing-left,
+svg.ladybug-interactive:hover .wing-left,
+svg.ladybug-interactive:active .wing-left,
+svg.ladybug-interactive:focus-visible .wing-left {
   transform: rotate(22deg);
 }
 .ladybug-interactive:hover svg .wing-right,
-svg.ladybug-interactive:hover .wing-right {
+.ladybug-interactive:active svg .wing-right,
+.ladybug-interactive:focus-visible svg .wing-right,
+svg.ladybug-interactive:hover .wing-right,
+svg.ladybug-interactive:active .wing-right,
+svg.ladybug-interactive:focus-visible .wing-right {
   transform: rotate(-26deg);
 }
 .hero-ladybug {
-  cursor: pointer;
   pointer-events: visiblePainted;
-  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
   transform-box: fill-box;
   transform-origin: center;
 }
-.hero-ladybug .wing-left,
-.hero-ladybug .wing-right {
-  transition: transform 0.65s cubic-bezier(0.34, 1.3, 0.64, 1);
-  transform-box: view-box;
+.hero-figma-art .hero-ladybug {
+  opacity: 0;
+  pointer-events: none;
 }
-#Group_3 .wing-left { transform-origin: 1001px 20px; }
-#Group_3 .wing-right { transform-origin: 1020px 30px; }
-#Group_4 .wing-left { transform-origin: 115px 358px; }
-#Group_4 .wing-right { transform-origin: 130px 365px; }
-#Group_5 .wing-left { transform-origin: 1073px 178px; }
-#Group_5 .wing-right { transform-origin: 1087px 187px; }
-.hero-ladybug:hover { transform: scale(1.08); }
-.hero-ladybug:hover .wing-left { transform: rotate(22deg); }
-.hero-ladybug:hover .wing-right { transform: rotate(-26deg); }
+/* The desktop title and calls to action are live HTML in Hero.tsx. */
+.hero-figma-art #Vector,
+.hero-figma-art #Group,
+.hero-figma-art #Group_2 {
+  opacity: 0;
+  pointer-events: none;
+}
+.hero-bug-overlay { z-index: 10; }
 
 .button-hover {
   transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;

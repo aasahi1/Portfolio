@@ -2,28 +2,22 @@ import { Link } from "react-router-dom"
 import { FEATURED_PROJECTS, PROJECTS, type Project } from "@/data/projects"
 import { Badge } from "@/components/ui/badge"
 import CloverSmall from "@/assets/clover-small.svg?react"
-import { Ladybugs } from "@/components/Ladybugs"
-import { ArrowUpRight, Sparkles, LockKeyhole } from "lucide-react"
+import LadybugBottom from "@/assets/ladybug-bottom.svg?react"
+import { ArrowUpRight, LockKeyhole } from "lucide-react"
 
 export function ProjectsPage() {
   return (
     <div className="relative isolate w-full py-16 md:py-24 bg-background overflow-hidden flex-1">
-      <Ladybugs
-        leftPositionClass="md:left-[-170px] md:top-[40px] lg:left-[-220px] lg:top-[50px] xl:left-[-260px] xl:top-[60px]"
-        rightPositionClass="md:top-[80px] lg:top-[100px] xl:top-[120px] -translate-y-1/2 md:right-[-190px] lg:right-[-230px] xl:right-[-270px]"
-      />
-
       <div className="container mx-auto px-6 sm:px-10 lg:px-20 relative z-10">
         
         {/* Page Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-yellow/40 border border-text-main/10 text-xs font-bold uppercase tracking-widest text-text-main shadow-xs">
-            <Sparkles className="w-3.5 h-3.5 text-text-accent" />
-            Product Design · Selected Work
+          <div className="flex items-center justify-center gap-3">
+            <LadybugBottom aria-hidden="true" className="ladybug-interactive h-7 w-6 shrink-0" />
+            <h1 className="text-[48px] sm:text-[64px] font-black text-text-main leading-none tracking-tight">
+              Case Studies
+            </h1>
           </div>
-          <h1 className="text-[48px] sm:text-[64px] font-black text-text-main leading-none tracking-tight">
-            Product design,<span className="text-text-accent"></span>
-          </h1>
         </div>
 
         {/* Projects Grid */}

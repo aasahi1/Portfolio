@@ -4,12 +4,12 @@ import {
   CarouselNext, CarouselPrevious, type CarouselApi,
 } from "@/components/ui/carousel"
 import {
-  Dialog, DialogContent,
+  Dialog, DialogContent, DialogTitle,
 } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import { X, ZoomIn } from "lucide-react"
 import CloverSmall from "@/assets/clover-small.svg?react"
-import { Ladybugs } from "@/components/Ladybugs"
+import LadybugBottom from "@/assets/ladybug-bottom.svg?react"
 
 const ART_PROJECTS = [
   {
@@ -55,18 +55,14 @@ export function Art() {
 
   return (
     <section id="art" className="relative isolate w-full py-12 md:py-16 pb-24 overflow-hidden bg-background">
-      <Ladybugs
-        leftPositionClass="md:left-[-160px] md:top-[50%] lg:left-[-200px] lg:top-[50%] xl:left-[-240px] xl:top-[50%] -translate-y-1/2"
-        rightPositionClass="md:top-[52%] lg:top-[52%] xl:top-[52%] -translate-y-1/2 md:right-[-170px] lg:right-[-210px] xl:right-[-240px]"
-      />
       <div className="container mx-auto px-6 sm:px-10 lg:px-20 relative z-10">
         <div className="text-center mb-10">
-          <h2 className="text-[48px] sm:text-[64px] font-black text-text-main leading-none">
-            Art & more<span className="text-text-accent">.</span>
-          </h2>
-          <p className="text-text-main/60 text-base font-medium mt-2 max-w-lg mx-auto">
-            A collection of traditional paintings, digital illustrations, and visual experiments.
-          </p>
+          <div className="flex items-center justify-center gap-3">
+            <LadybugBottom aria-hidden="true" className="ladybug-interactive h-7 w-6 shrink-0" />
+            <h2 className="text-[48px] sm:text-[64px] font-black text-text-main leading-none">
+              My Art
+            </h2>
+          </div>
         </div>
 
         <div className="relative overflow-visible">
@@ -81,7 +77,7 @@ export function Art() {
                   <div
                     onClick={() => setZoomedProject(project)}
                     className={`group relative flex flex-col items-center pt-4 pb-8 overflow-visible cursor-pointer transition-all duration-500 ${
-                      current === index ? 'z-30 scale-100 opacity-100' : 'z-20 scale-90 opacity-55'
+                      current === index ? 'z-30 scale-100 opacity-100' : 'z-20 scale-90 opacity-100'
                     }`}
                   >
                     <div className="relative w-full aspect-square rounded-2xl overflow-hidden transition-transform duration-500 group-hover:scale-[1.02] bg-white/60 shadow-lg border border-black/5">
@@ -101,9 +97,6 @@ export function Art() {
                     <div className={`mt-[-40px] z-10 w-[88%] p-5 rounded-2xl shadow-xl space-y-2 border border-black/5 ${project.color}`}>
                       <div className="flex justify-between items-start">
                         <div>
-                          <h3 className="text-lg sm:text-xl font-black text-text-main tracking-tight group-hover:text-text-accent transition-colors">
-                            {project.title}
-                          </h3>
                           <p className="text-xs sm:text-sm font-semibold text-text-main/70">
                             {project.medium}
                           </p>
@@ -144,6 +137,7 @@ export function Art() {
       {/* Artwork Lightbox / Fullview Dialog */}
       <Dialog open={!!zoomedProject} onOpenChange={(open) => !open && setZoomedProject(null)}>
         <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 border-none bg-black/90 shadow-2xl flex items-center justify-center [&>button]:hidden rounded-2xl overflow-hidden">
+          <DialogTitle className="sr-only">Artwork preview</DialogTitle>
           {zoomedProject && (
             <div className="relative w-full max-h-[90vh] flex flex-col items-center justify-center p-4 sm:p-8">
               <button
@@ -161,7 +155,6 @@ export function Art() {
               />
 
               <div className="mt-4 text-center text-white space-y-1">
-                <h3 className="text-xl sm:text-2xl font-black">{zoomedProject.title}</h3>
                 <p className="text-xs sm:text-sm text-white/70 font-medium">{zoomedProject.medium}</p>
                 <div className="flex justify-center flex-wrap gap-1.5 pt-2">
                   {zoomedProject.tags.map(tag => (
