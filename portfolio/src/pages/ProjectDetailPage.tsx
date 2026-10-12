@@ -52,7 +52,7 @@ export function ProjectDetailPage() {
     : project.gallery
 
   return (
-    <div className="relative isolate w-full py-12 md:py-20 bg-background overflow-hidden flex-1">
+    <div className="project-detail-page relative isolate w-full py-12 md:py-20 bg-background overflow-hidden flex-1">
       <Ladybugs
         leftPositionClass="md:left-[-160px] md:top-[40px] lg:left-[-200px] lg:top-[50px] xl:left-[-240px] xl:top-[60px]"
         rightPositionClass="md:top-[80px] lg:top-[100px] xl:top-[120px] -translate-y-1/2 md:right-[-180px] lg:right-[-220px] xl:right-[-260px]"
@@ -151,7 +151,7 @@ export function ProjectDetailPage() {
             <Link to="/projects">All Projects</Link>
           </Button>
           <Button asChild className="bg-text-accent text-white hover:bg-text-accent/90 rounded-full font-bold px-7 h-11 shadow-md">
-            <a href="mailto:aasahi@uwaterloo.ca">Get in Touch</a>
+            <a href="https://www.linkedin.com/in/amna-sahi/" target="_blank" rel="noreferrer">Get in Touch</a>
           </Button>
         </div>
 
@@ -222,10 +222,10 @@ const CASE_STUDY_BASICS: Record<string, CaseStudyBasicsData> = {
     contribution: "Designed and built the website, including information architecture, responsive UI, interactions, and all site copy.",
     problem: "How might a technically dense operations product be explained clearly to prospective users across devices?",
     earlySignal: "Public product capabilities informed the site story. NDA restrictions prevent sharing authenticated screens, internal workflows, or private research artifacts.",
-    evidenceLimit: "This public case study shows the website process only; it does not claim product adoption or conversion results.",
+    evidenceLimit: "This project page shows the website process only; it does not claim product adoption or conversion results.",
     constraint: "The story needs enough operational specificity to be credible while respecting confidentiality and responsive requirements.",
     choice: "Use a clear information hierarchy and portfolio-safe abstract visuals to explain the public-facing value without exposing the protected product.",
-    tradeoff: "Abstraction protects internal work but makes the product harder to inspect in detail. The case study prioritizes confidentiality and explains what can be shared.",
+    tradeoff: "Abstraction protects internal work but makes the product harder to inspect in detail. This project page prioritizes confidentiality and explains what can be shared.",
     longView: "Over 2–3 years, keep the site structure modular so new capabilities and audiences can be added without losing a consistent product story.",
   },
 }
@@ -320,7 +320,7 @@ function ProjectProcess({ projectId, projectTitle }: { projectId: string; projec
       <div className="mb-8 max-w-2xl space-y-2">
         <p className="text-xs font-black uppercase tracking-[0.24em] text-text-accent">End-to-end process map</p>
         <h2 id="process-heading" className="text-3xl font-black tracking-tight text-text-main sm:text-4xl">{process.title}</h2>
-        <p className="text-sm leading-relaxed text-text-main/65">A concise view of the decisions that connect the starting need to the experience shown in this case study.</p>
+        <p className="text-sm leading-relaxed text-text-main/65">A concise view of the decisions that connect the starting need to the experience shown in this project.</p>
       </div>
       <div className="relative">
         <div className="absolute bottom-5 left-[1.1rem] top-5 w-px border-l-2 border-dashed border-text-accent/40 sm:left-6 sm:right-6 sm:top-[1.15rem] sm:h-px sm:w-auto sm:border-b-2 sm:border-l-0" aria-hidden="true" />
@@ -328,7 +328,7 @@ function ProjectProcess({ projectId, projectTitle }: { projectId: string; projec
           {process.phases.map((phase, index) => (
             <li key={phase.name} className="flex gap-4 sm:flex-col sm:gap-4">
               <span className="z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-text-accent bg-[#fffdf5] text-xs font-black text-text-accent sm:h-10 sm:w-10">{String(index + 1).padStart(2, "0")}</span>
-              <div className="rounded-2xl border border-text-main/10 bg-white/80 p-4 sm:min-h-40 sm:p-4">
+              <div className="project-process-visual rounded-2xl border border-text-main/10 bg-white/80 p-4 sm:min-h-40 sm:p-4">
                 <h3 className="font-black text-text-main">{phase.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-text-main/70">{phase.detail}</p>
                 <span className="mt-4 inline-flex rounded-full bg-brand-yellow/45 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-text-main/70">Focus: {phase.artifact}</span>
@@ -337,7 +337,7 @@ function ProjectProcess({ projectId, projectTitle }: { projectId: string; projec
           ))}
         </ol>
       </div>
-      <div className="mt-8 rounded-2xl bg-[#f4f0e4] p-5 sm:p-6">
+      <div className="project-process-visual mt-8 rounded-2xl bg-[#f4f0e4] p-5 sm:p-6">
         <svg viewBox="0 0 720 110" role="img" aria-label={`${projectTitle} process map: ${process.phases.map((phase) => phase.name).join(", ")}`} className="h-auto w-full text-text-accent">
           <path d="M28 70 C110 19 160 104 245 54 S370 26 430 65 S550 93 690 35" fill="none" stroke="currentColor" strokeWidth="3" strokeDasharray="7 8" strokeLinecap="round" />
           {[45, 205, 360, 520, 675].map((x, i) => <g key={x} transform={`translate(${x} ${[61, 57, 49, 67, 39][i]})`}><circle r="15" fill="#fffdf5" stroke="currentColor" strokeWidth="2.5" /><path d="M-5 0h10M0-5v10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></g>)}
@@ -353,7 +353,7 @@ function IcmmsStory() {
     <section className="space-y-7 rounded-3xl border border-[#24547f] bg-[#071827] p-6 text-white shadow-xl sm:p-10">
       <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
         <div className="max-w-2xl space-y-3">
-          <p className="text-xs font-black uppercase tracking-[0.24em] text-[#24d4ff]">NDA-protected case study</p>
+          <p className="text-xs font-black uppercase tracking-[0.24em] text-[#24d4ff]">NDA-protected project</p>
           <h2 className="text-3xl font-black tracking-tight sm:text-4xl">Making complex operations feel clear.</h2>
           <p className="leading-relaxed text-[#b9d2e8]">I created the ICMMS website from start to finish during my Alectify co-op, turning a technically dense product into a focused story and responsive experience.</p>
         </div>
@@ -417,7 +417,7 @@ function HabitAtStory() {
   return (
     <section className="space-y-6 rounded-3xl border border-black/5 bg-white/60 p-6 shadow-xs sm:p-10">
       <div className="space-y-2">
-        <p className="text-xs font-black uppercase tracking-[0.24em] text-text-accent">Case study</p>
+        <p className="text-xs font-black uppercase tracking-[0.24em] text-text-accent">Project</p>
         <h2 className="text-3xl font-black tracking-tight text-text-main sm:text-4xl">Turn a shared space into shared momentum.</h2>
       </div>
       <div className="grid gap-5 md:grid-cols-3">
@@ -482,7 +482,7 @@ function LurnPhotoCarousel() {
 function LurnStory() {
   return (
     <section className="space-y-6 rounded-3xl border border-black/5 bg-white/60 p-6 shadow-xs sm:p-10">
-      <div className="space-y-2"><p className="text-xs font-black uppercase tracking-[0.24em] text-text-accent">Case study</p><h2 className="text-3xl font-black tracking-tight text-text-main sm:text-4xl">Learning that meets every child where they are.</h2></div>
+      <div className="space-y-2"><p className="text-xs font-black uppercase tracking-[0.24em] text-text-accent">Project</p><h2 className="text-3xl font-black tracking-tight text-text-main sm:text-4xl">Learning that meets every child where they are.</h2></div>
       <div className="grid gap-5 md:grid-cols-3">
         <StoryCard icon={<Accessibility className="h-5 w-5" />} title="The problem">A fixed pace or format can make it harder for some learners to stay engaged and understand what to do next.</StoryCard>
         <StoryCard icon={<Brain className="h-5 w-5" />} title="The learner">Ginny is a Grade 4 student who benefits from short, gamified sessions and prefers text- or audio-based learning.</StoryCard>
@@ -535,7 +535,7 @@ function CoConnectStory() {
   return (
     <section className="space-y-6 rounded-3xl border border-black/5 bg-white/60 p-6 shadow-xs sm:p-10">
       <div className="space-y-2">
-        <p className="text-xs font-black uppercase tracking-[0.24em] text-text-accent">Case study</p>
+        <p className="text-xs font-black uppercase tracking-[0.24em] text-text-accent">Project</p>
         <h2 className="text-3xl font-black tracking-tight text-text-main sm:text-4xl">A warmer start to the advisor relationship.</h2>
       </div>
 

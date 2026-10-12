@@ -76,15 +76,15 @@ export function Art() {
                 <CarouselItem key={index} className="pl-4 basis-[85%] sm:basis-[360px] md:basis-[420px] overflow-visible">
                   <div
                     onClick={() => setZoomedProject(project)}
-                    className={`group relative flex flex-col items-center pt-4 pb-8 overflow-visible cursor-pointer transition-all duration-500 ${
+                    className={`site-motion-carousel site-motion-group group relative flex flex-col items-center pt-4 pb-8 overflow-visible cursor-pointer ${
                       current === index ? 'z-30 scale-100 opacity-100' : 'z-20 scale-90 opacity-100'
                     }`}
                   >
-                    <div className="relative w-full aspect-square rounded-2xl overflow-hidden transition-transform duration-500 group-hover:scale-[1.02] bg-white/60 shadow-lg border border-black/5">
+                    <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-white/60 shadow-lg border border-black/5">
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="site-motion-image w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
                         <div className="bg-white/90 p-3 rounded-full shadow-lg scale-75 group-hover:scale-100 transition-transform">

@@ -10,32 +10,31 @@ import LadybugIcon from "@/assets/ladybug-bottom.svg?react"
 
 export function About() {
   return (
-    <section id="about" className="relative w-full py-24 md:py-32 overflow-hidden bg-brand-light/20">
+    <section id="about" className="relative w-full py-16 md:py-20 lg:py-24 overflow-hidden bg-brand-light/20">
       <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-brand-yellow/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
       <div className="container mx-auto px-6 sm:px-10 lg:px-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
 
           {/* LEFT: Content */}
-          <div className="space-y-7 max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
+          <div className="space-y-6 max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
             <h2 className="group text-[52px] sm:text-[64px] font-black text-text-main leading-[1] tracking-tight cursor-default">
               <span className="group-hover:text-text-accent transition-colors duration-300">About me</span>
               <span className="text-text-accent">!</span>
             </h2>
 
-            <div className="space-y-5 text-text-main text-[16px] sm:text-[17px] leading-[1.7] font-medium">
+            <div className="space-y-4 text-text-main text-[16px] sm:text-[17px] leading-[1.7] font-medium">
               <p>
-              I like understanding what people need, turning messy problems into clear, usable solutions, and then building them.
+              I’m a Fine Arts student at the University of Waterloo, minoring in Computer Science and Psychology. My background shapes how I approach product design, from understanding user behaviour to thinking through how a product looks, works, and feels.              </p>
+              <p>
+              I’ve designed web and mobile applications for startups, participated in designathons, and exhibited art installations in galleries. Working across digital and physical mediums has given me a different perspective on design and problem-solving.
               </p>
               <p>
-              My work sits somewhere between product design, front-end development, and creative technology. I’ve designed apps and websites for startups, won designathons, and exhibited interactive installations in galleries. I’m especially interested in products where good design isn’t just about how something looks, but how it thinks, works, and makes people feel.
-              </p>
-              <p>
-                When I’m not designing or coding, I’m usually painting or making. Acrylics, Sculptures, trinkets for my family, whatever I can get my hands on. It’s taught me to pay attention to composition, detail, and the little things that make something feel right.
+              I spend my spare time painting, sculpting, and gardening. I like any hands on project and making things from scratch.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3 pt-2 justify-center lg:justify-start">
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
               <a href="https://github.com/aasahi1" target="_blank" rel="noreferrer">
                 <Button className="bg-text-main text-brand-yellow hover:bg-brand-yellow hover:text-text-main h-10 px-5 gap-2 rounded-full shadow-md transition-all hover:-translate-y-0.5 text-sm font-bold">
                   <GithubIcon className="w-4 h-4 fill-current" />
@@ -52,7 +51,7 @@ export function About() {
           </div>
 
           {/* RIGHT: Four Clovers with Profile Photo in the Center */}
-          <div className="relative w-full max-w-[440px] sm:max-w-[500px] mx-auto lg:max-w-none lg:pl-4 py-4">
+          <div className="relative w-full max-w-[440px] sm:max-w-[500px] mx-auto lg:max-w-none lg:pl-4 py-2">
             {/* 2x2 Clovers Grid */}
             <div className="grid grid-cols-2 gap-x-10 sm:gap-x-16 gap-y-12 sm:gap-y-16 relative z-10">
               {/* Top Row: text above icons so center photo never overlaps text */}

@@ -17,20 +17,20 @@ const weeks = [
   {
     week: "Week 1",
     title: "Research & ideation",
-    text: "Interview advisors, current clients, and prospective clients; explore ways to make advisor discovery easier to approach.",
-    phases: ["Initial research", "Ideation"],
+    text: "Interview advisors and clients, then explore ways to make advisor discovery easier to approach.",
+    phases: ["Initial research", "Concept exploration"],
   },
   {
     week: "Week 2",
     title: "Structure & iteration",
-    text: "Map the experience from invitation to recommendations, then refine the low-fidelity flow and screen structure.",
-    phases: ["App structure", "Lo-fi testing & revision"],
+    text: "Map the invitation-to-match journey and refine the screen structure.",
+    phases: ["App structure", "Low-fidelity iteration"],
   },
   {
     week: "Week 3",
     title: "Prototype & pitch",
-    text: "Bring the selected direction into a final-fidelity prototype and prepare the concept for the judging panel.",
-    phases: ["Delivery", "Final presentation"],
+    text: "Build the selected direction into a high-fidelity prototype and prepare the final pitch.",
+    phases: ["Final prototype", "Presentation"],
   },
 ]
 
@@ -95,7 +95,7 @@ export function CoConnectCaseStudy() {
             </dl>
           </div>
           <div className="cc-hero-visual">
-            <StoryImage src="co-connect-landing.jpg" alt="Co-Connect landing page introducing financial guidance and advisor matching" className="cc-hero-shot" loading="eager" />
+            <StoryImage src="co-connect-laptop-hero.png" alt="Laptop mockup displaying the Co-Connect landing page" className="cc-hero-shot" loading="eager" />
           </div>
         </header>
 
@@ -110,19 +110,15 @@ export function CoConnectCaseStudy() {
           <div className="cc-research">
             <div className="cc-research-copy">
               <h3>Research the relationship, not just the search.</h3>
-              <p>I interviewed people on both sides of the advisor relationship to understand how someone finds guidance, what helps them feel confident, and whether a trusted introduction could make reaching out feel more approachable.</p>
+              <p>Interviews and survey responses explored how people find financial guidance, assess an advisor, and decide whether to reach out.</p>
               <ul className="cc-participants" aria-label="Research participants">
                 <li><strong>3</strong><span>financial advisors</span></li>
                 <li><strong>10</strong><span>current clients</span></li>
                 <li><strong>19</strong><span>prospective clients</span></li>
               </ul>
-              <p className="cc-small-note">Participants were recruited through Co-operators mentors, personal networks, and survey responses.</p>
+              <p className="cc-small-note">Participants came through Co-operators mentors, personal networks, and survey responses.</p>
             </div>
             <StoryImage src="co-connect-team-workshop.jpg" alt="Design jam participants working together around tables during a workshop" className="cc-research-photo" />
-          </div>
-          <div className="cc-question-row">
-            <span>Research focus</span>
-            <p>How do people choose an advisor? What information builds confidence? What makes financial guidance feel intimidating? Could a referral make it easier to begin?</p>
           </div>
           <div className="cc-research-bridge" aria-label="How research questions informed the experience">
             <h3>Questions that shaped the experience</h3>
@@ -203,14 +199,14 @@ export function CoConnectCaseStudy() {
             <a className="cc-prototype-link" href={prototypeUrl} target="_blank" rel="noreferrer">Open the prototype <ArrowRight size={16} aria-hidden="true" /></a>
           </div>
           <div className="cc-prototype-gallery">
-            <StoryImage src="co-connect-feature-overview.jpg" alt="Co-Connect page introducing the product’s main guidance features" />
+            <StoryImage src="co-connect-feature-overview.jpg" alt="Co-Connect page introducing the product's main guidance features" />
           </div>
           <div className="cc-outcome">
             <div className="cc-result">
               <p className="cc-eyebrow">Design Jam outcome</p>
               <strong>2<sup>nd</sup></strong>
               <span>place among 30 teams</span>
-              <p>Our four-person team presented to five Co-operators executives. The work was evaluated on design, presentation, and implementation.</p>
+              <p>Our four-person team presented to five Co-operators executives, with the concept evaluated on design, presentation, and implementation.</p>
             </div>
             <div className="cc-outcome-photos">
               <StoryImage src="co-connect-event-team.jpg" alt="Design Jam participants gathered together after the event" />

@@ -73,6 +73,9 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   * {
     @apply border-border outline-ring/50;
     margin: 0;
@@ -155,13 +158,51 @@ svg.ladybug-interactive:focus-visible .wing-right {
 .hero-bug-overlay { z-index: 10; }
 
 .button-hover {
-  transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
+  transition: transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1), background-color 220ms cubic-bezier(0.2, 0.7, 0.2, 1), color 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .button-hover:hover:not(:disabled) {
   transform: translateY(-2px);
 }
 .button-hover:active:not(:disabled) {
   transform: translateY(0) scale(.98);
+}
+
+.site-card-motion {
+  transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 240ms cubic-bezier(0.2, 0.7, 0.2, 1), background-color 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.site-card-motion:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(43, 18, 10, 0.12);
+}
+.site-motion-image {
+  transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.site-card-motion:hover .site-motion-image {
+  transform: scale(1.025);
+}
+.site-motion-group:hover .site-motion-image {
+  transform: scale(1.025);
+}
+.site-motion-carousel {
+  transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1), opacity 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.site-motion-image-emphasis {
+  transform: scale(1.06);
+}
+.site-card-motion:hover .site-motion-image-emphasis {
+  transform: scale(1.09);
+}
+
+.project-detail-page article,
+.project-detail-page .project-process-visual {
+  transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .project-detail-page article:hover,
+  .project-detail-page .project-process-visual:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(43, 18, 10, 0.1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -187,5 +228,11 @@ svg.ladybug-interactive:focus-visible .wing-right {
   }
   .button-hover {
     transition-duration: 0.24s !important;
+  }
+  .site-card-motion,
+  .site-motion-group,
+  .site-motion-carousel,
+  .site-motion-image {
+    transition-duration: 0.01ms !important;
   }
 }

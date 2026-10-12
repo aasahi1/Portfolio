@@ -2,7 +2,6 @@ import { Link } from "react-router-dom"
 import { FEATURED_PROJECTS, PROJECTS, type Project } from "@/data/projects"
 import { Badge } from "@/components/ui/badge"
 import CloverSmall from "@/assets/clover-small.svg?react"
-import LadybugBottom from "@/assets/ladybug-bottom.svg?react"
 import { ArrowUpRight, LockKeyhole } from "lucide-react"
 
 export function ProjectsPage() {
@@ -13,9 +12,8 @@ export function ProjectsPage() {
         {/* Page Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
           <div className="flex items-center justify-center gap-3">
-            <LadybugBottom aria-hidden="true" className="ladybug-interactive h-7 w-6 shrink-0" />
             <h1 className="text-[48px] sm:text-[64px] font-black text-text-main leading-none tracking-tight">
-              Case Studies
+              Projects
             </h1>
           </div>
         </div>
@@ -26,14 +24,14 @@ export function ProjectsPage() {
             <Link
               key={project.id}
               to={`/projects/${project.id}`}
-              className="group relative flex flex-col rounded-3xl bg-white/80 shadow-md border border-black/5 overflow-hidden transition-all duration-400 hover:-translate-y-2 hover:shadow-2xl hover:bg-white"
+              className="site-card-motion group relative flex flex-col overflow-hidden rounded-3xl bg-[#f7f1dc] shadow-md hover:bg-[#f3e8bd]"
             >
               {/* Image Preview Banner */}
               <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden bg-transparent p-6 transition-colors duration-500 sm:p-8">
                 <img
                   src={project.image}
                   alt={project.imageAlt || project.title}
-                  className="w-full h-full object-contain drop-shadow-md group-hover:scale-108 transition-transform duration-500 ease-out"
+                  className="site-motion-image w-full h-full object-contain drop-shadow-md"
                 />
                 <CloverSmall className="absolute top-4 right-4 w-7 h-7 opacity-25 text-text-main group-hover:rotate-45 group-hover:opacity-40 transition-all duration-500" />
                 
@@ -99,9 +97,9 @@ export function ProjectsPage() {
         {PROJECTS.some((project) => !FEATURED_PROJECTS.some((featured) => featured.id === project.id)) && <section className="mx-auto mt-12 max-w-5xl border-t border-text-main/10 pt-8" aria-labelledby="additional-work-heading">
           <h2 id="additional-work-heading" className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-text-main/55">Additional experience</h2>
           {PROJECTS.filter((project) => !FEATURED_PROJECTS.some((featured) => featured.id === project.id)).map((project) => (
-            <Link key={project.id} to={`/projects/${project.id}`} className="group flex flex-col gap-3 rounded-2xl border border-black/5 bg-white/65 p-5 transition-colors hover:bg-white sm:flex-row sm:items-center sm:justify-between">
+            <Link key={project.id} to={`/projects/${project.id}`} className="group flex flex-col gap-3 rounded-2xl border border-black/5 bg-[#f7f1dc] p-5 transition-colors hover:bg-[#f3e8bd] sm:flex-row sm:items-center sm:justify-between">
               <div><div className="flex items-center gap-2"><h3 className="text-lg font-black text-text-main group-hover:text-text-accent">{project.title}</h3>{project.confidential && <span className="rounded-full bg-text-main px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-brand-yellow">NDA</span>}</div><p className="mt-1 max-w-2xl text-sm leading-relaxed text-text-main/70">{project.description}</p></div>
-              <span className="shrink-0 text-xs font-black uppercase tracking-wider text-text-accent">View case study →</span>
+              <span className="shrink-0 text-xs font-black uppercase tracking-wider text-text-accent">View project →</span>
             </Link>
           ))}
         </section>}
@@ -116,7 +114,9 @@ export function ProjectsPage() {
           </p>
           <div className="pt-2">
             <a
-              href="mailto:aasahi@uwaterloo.ca"
+              href="https://www.linkedin.com/in/amna-sahi/"
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-text-main text-brand-yellow hover:bg-brand-yellow hover:text-text-main font-black text-sm tracking-wide shadow-md transition-all hover:-translate-y-0.5"
             >
               Get in Touch

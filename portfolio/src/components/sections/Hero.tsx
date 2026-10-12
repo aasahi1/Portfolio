@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
+import { ArrowDown } from "lucide-react"
 import FigmaHero from "@/assets/figma-home-hero.svg?react"
 import LadybugTop from "@/assets/ladybug-top.svg?react"
 import LadybugBottom from "@/assets/ladybug-bottom.svg?react"
@@ -53,6 +54,16 @@ export function Hero() {
           </div>
         </div>
       </div>
+
+      <a
+        href="#portfolio"
+        aria-label="Scroll to projects"
+        title="Scroll to projects"
+        className="group absolute left-1/2 z-30 inline-flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full text-brand-yellow transition-transform duration-300 hover:translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text-main"
+        style={{ top: "min(clamp(320px, calc(100svh - 130px), 680px), calc(100% - 52px))" }}
+      >
+        <ArrowDown aria-hidden="true" className="h-5 w-5 transition-transform duration-300 group-hover:translate-y-0.5" />
+      </a>
     </section>
   )
 }

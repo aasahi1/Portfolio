@@ -1,36 +1,143 @@
-import { StandardCaseStudy, type StudyData } from "@/components/case-studies/StandardCaseStudy"
+import { ArrowRight, ExternalLink } from "lucide-react"
+import { CaseStudyAnchorNav, CaseStudyFrame } from "@/components/case-studies/CaseStudyPrimitives"
+import "./LurnCaseStudy.css"
 
-const data: StudyData = {
-  id: "lurn", index: "03", title: "Lurn", eyebrow: "Inclusive learning · Product concept", year: "Dates and duration need confirmation",
-  intro: "An inclusive homework concept that gives students clear next steps and helps teachers see where support may be useful.",
-  images: [
-    { src: "/lurn/student-dashboard.png", alt: "Lurn student dashboard with weekly progress and subject choices", caption: "Student interface concept; not evidence of classroom use." },
-    { src: "/lurn/mobile-dashboard.png", alt: "Lurn mobile student dashboard", caption: "Mobile student interface concept." },
-  ],
-  overview: [
-    { label: "Team", value: "Collaborators and role split are not recorded." },
-    { label: "Timeline", value: "Existing portfolio records differ; confirm the dates and duration." },
-    { label: "Constraints", value: "Student and teacher needs vary. No classroom validation, accessibility evaluation, or implementation record is available." },
-    { label: "My role", value: "End-to-end product designer; learner framing, flows, interface design, and prototyping." },
-  ],
-  sections: [
-    { text: "Lurn explores a homework experience for students and teachers. The concept combines manageable learning activities with a teacher view of progress and submitted work.", evidence: "documented" },
-    { text: "The student dashboard and mobile screen show the proposed student experience. A teacher-flow diagram exists, but a teacher dashboard screenshot is not included." },
-    { text: "The concept responds to a learner scenario: a Grade 4 student named Ginny prefers text or audio and benefits from short activities. The portfolio does not identify the source of that scenario.", evidence: "hypothesis" },
-    { text: "The existing record lists the role and design artifacts, but not collaborators, exact dates, or a reliable duration." },
-    { text: "Students may need approachable instructions and manageable activities; teachers may need useful context for deciding when to help. These needs are design hypotheses, not measured findings.", evidence: "hypothesis" },
-    { text: "The project record includes student and teacher flow diagrams, but no early screen wireframes or sketches. These flows show the proposed paths, not a before-and-after iteration. Add original sketches and describe what changed if they are available.", images: [{ src: "/lurn/student-flow-map.svg", alt: "Lurn student flow map", caption: "Existing student journey diagram." }, { src: "/lurn/teacher-flow-map.svg", alt: "Lurn teacher flow map", caption: "Existing teacher journey diagram; no teacher dashboard screenshot is recorded." }], evidence: "verify" },
-    { text: "The challenge was supporting different ways to engage with learning without reducing a student to a fixed profile, while giving teachers context without replacing their judgment." },
-    { text: "The project portfolio does not include competitor research or documented visual references. Add the source material and the specific patterns that informed the interface if available.", evidence: "verify" },
-    { text: "No research sessions, participant details, or findings are documented. Framing questions include: How do students understand the next step? What context helps teachers decide when to follow up? These are not recorded as questions asked in research.", evidence: "verify" },
-    { text: "The portfolio describes Ginny as a Grade 4 learner scenario who prefers text or audio and benefits from short activities. It is not documented as a research participant or representative persona. Framing questions: Who are we designing for? What does this learner need to do? What frustrates them? What barriers get in the way? Add the scenario source and any documented goals or behaviors.", evidence: "verify" },
-    { text: "No research findings are recorded. The scenario suggests adjustable text/audio supports and manageable activities; whether these choices meet students' needs remains to be tested.", evidence: "hypothesis" },
-    { text: "The student interface presents weekly work and subject choices. The learning-preference onboarding and teacher flow explore ways to support student choice and teacher follow-up. These are concept directions, not tested decisions.", cards: [{ title: "Keep supports adjustable", text: "Preferences such as text or audio should remain changeable rather than defining a fixed learning identity." }, { title: "Treat teacher signals as prompts", text: "Progress information should support teacher judgment, not act as a diagnosis." }], images: [{ src: "/lurn/learning-style-quiz.png", alt: "Lurn learning preference onboarding screen", caption: "The existing screen depicts a learning-style check; a next iteration could allow students to revise preferences." }, { src: "/lurn/teacher-flow.png", alt: "Lurn teacher workflow diagram", caption: "Proposed review and feedback flow, not a teacher dashboard or validated workflow." }] },
-    { text: "Usability testing and accessibility evaluation are not documented. There are no participant tasks, findings, or measured outcomes in the project record.", evidence: "verify" },
-    { text: "A second challenge is balancing a teacher overview with the risk of treating time spent, completion, or automated suggestions as a complete measure of learning. No final resolution is validated in the available artifacts.", evidence: "hypothesis" },
-    { text: "The portfolio describes end-to-end design and prototyping, but no developer collaboration, implementation specifications, or formal handoff is recorded.", evidence: "verify" },
-    { text: "A personal retrospective is not included. Add what I learned about inclusive learning design and what I would change after testing with students and teachers in an appropriately supported setting.", evidence: "verify" },
-  ],
+const asset = "/lurn/"
+
+const sections = [
+  { href: "lurn-context", label: "Challenge & learner" },
+  { href: "lurn-concept", label: "Concept & flows" },
+  { href: "lurn-decisions", label: "Design decisions" },
+  { href: "lurn-outcome", label: "Outcome & reflection" },
+]
+
+const decisions = [
+  {
+    title: "Make the next step clear",
+    text: "The concept organizes longer assignments into shorter activities. Students can focus on one step and see how it fits into the larger task.",
+    image: "activity-interruption.svg",
+    alt: "Lurn activity interface concept showing a student activity",
+  },
+  {
+    title: "Let students shape how they learn",
+    text: "The onboarding and customization concepts offer ways to make learning feel more relevant. Preferences should remain flexible, rather than becoming fixed labels for a learner.",
+    image: "profile-customization.svg",
+    alt: "Lurn student profile customization concept",
+  },
+  {
+    title: "Connect the student and teacher experience",
+    text: "The student and teacher journeys belong to one learning experience: students work through activities while teachers organize and deliver them.",
+    image: "teacher-flow.png",
+    alt: "Lurn teacher flow showing the proposed assignment and classroom journey",
+  },
+]
+
+function StoryImage({ src, alt, className = "", eager = false }: { src: string; alt: string; className?: string; eager?: boolean }) {
+  return <img className={`lurn-image ${className}`} src={`${asset}${src}`} alt={alt} loading={eager ? "eager" : "lazy"} fetchPriority={eager ? "high" : "auto"} />
 }
 
-export function LurnCaseStudy() { return <StandardCaseStudy data={data} /> }
+export function LurnCaseStudy() {
+  return (
+    <CaseStudyFrame id="lurn">
+      <div className="lurn-case-study">
+        <header className="lurn-hero">
+          <div className="lurn-hero-copy">
+            <p className="lurn-eyebrow">Inclusive learning · UX/UI Designathon</p>
+            <h1>Lurn</h1>
+            <p className="lurn-hero-title">Making learning feel more manageable.</p>
+            <p className="lurn-lede">An inclusive learning concept that makes assignments more accessible, engaging, and easier to approach for students with diverse learning needs.</p>
+            <dl className="lurn-meta">
+              <div><dt>Role</dt><dd>Lead designer</dd></div>
+              <div><dt>Project type</dt><dd>UX/UI Designathon</dd></div>
+              <div><dt>Timeline</dt><dd>6 hours</dd></div>
+              <div><dt>Team</dt><dd>1 researcher, 1 graphic designer, 2 ux designers</dd></div>
+            </dl>
+          </div>
+          <figure className="lurn-hero-visual">
+            <StoryImage src="Assets.png" alt="Lurn teacher classroom dashboard showing weekly activity and subject choices" eager />
+          </figure>
+        </header>
+
+        <CaseStudyAnchorNav items={sections} />
+
+        <section className="lurn-section" id="lurn-context" aria-labelledby="lurn-context-title">
+          <div className="lurn-section-heading">
+            <p className="lurn-eyebrow">The challenge</p>
+            <h2 id="lurn-context-title">Help students find a place to begin.</h2>
+            <p>Long instructions and complex assignments can feel overwhelming when a student is managing focus, planning, or different learning formats. Lurn explores breaking work into smaller, structured activities while giving teachers a way to organize learning.</p>
+          </div>
+
+          <div className="lurn-research">
+            <div className="lurn-research-copy">
+              <p className="lurn-eyebrow">Broader research context</p>
+              <h3>Inclusive learning calls for flexibility and support.</h3>
+              <p>These public sources frame the design challenge. They are broader context, not research conducted for Lurn.</p>
+            </div>
+            <div className="lurn-source-list">
+              <a href="https://www.ohrc.on.ca/en/main-barriers-education-students-disabilities-fact-sheet" target="_blank" rel="noreferrer"><strong>Ontario Human Rights Commission</strong><span>Barriers to accessible education include delays in accommodation and access to support.</span><ExternalLink size={15} aria-hidden="true" /></a>
+              <a href="https://www.cdc.gov/child-development/about/developmental-disability-basics.html" target="_blank" rel="noreferrer"><strong>U.S. Centers for Disease Control and Prevention</strong><span>CDC estimates about 1 in 6 U.S. children ages 3–17 have one or more developmental disabilities. This is general context, not a Lurn finding.</span><ExternalLink size={15} aria-hidden="true" /></a>
+            </div>
+          </div>
+
+          <article className="lurn-persona">
+            <div className="lurn-persona-profile">
+              <p className="lurn-eyebrow">Design persona</p>
+              <h3>Ginny Martin</h3>
+              <p>Age 9 · Grade 4 · Calgary, Canada</p>
+            </div>
+            <div className="lurn-persona-details">
+              <p>Ginny has ADHD and can find it hard to stay focused on long assignments, especially when distractions arise. Her scenario helped keep the concept grounded in clear, manageable work.</p>
+              <p><strong>Goals</strong>Complete assignments without feeling overwhelmed; learn in short steps; stay motivated through games and personalization.</p>
+              <p><strong>Needs</strong>Clear instructions, achievable steps, text and audio options, and an engaging experience that supports focus.</p>
+            </div>
+          </article>
+        </section>
+
+        <section className="lurn-section" id="lurn-concept" aria-labelledby="lurn-concept-title">
+          <div className="lurn-section-heading">
+            <p className="lurn-eyebrow">Concept & flows</p>
+            <h2 id="lurn-concept-title">Make the next step clear and achievable.</h2>
+            <p>The student journey moves from an assignment into shorter activities and visible progress. The teacher journey supports organizing and delivering those activities.</p>
+          </div>
+          <div className="lurn-journey" aria-label="Assignment to activity to progress concept">
+            <strong>Assignment</strong><ArrowRight aria-hidden="true" /><strong>Short activities</strong><ArrowRight aria-hidden="true" /><strong>Visible progress</strong>
+          </div>
+          <div className="lurn-flow-visuals">
+            <figure><StoryImage src="student-flow-map.svg" alt="Lurn student flow diagram showing the proposed student learning path" /></figure>
+            <figure><StoryImage src="teacher-flow-map.svg" alt="Lurn teacher flow diagram showing the proposed classroom and assignment path" /></figure>
+          </div>
+        </section>
+
+        <section className="lurn-section" id="lurn-decisions" aria-labelledby="lurn-decisions-title">
+          <div className="lurn-section-heading">
+            <p className="lurn-eyebrow">Key design decisions</p>
+            <h2 id="lurn-decisions-title">Support focus, choice, and teaching.</h2>
+          </div>
+          <div className="lurn-decisions">
+            {decisions.map((decision) => (
+              <article className="lurn-decision" key={decision.title}>
+                <div className="lurn-decision-copy"><span className="lurn-decision-mark" aria-hidden="true" /><h3>{decision.title}</h3><p>{decision.text}</p></div>
+                <StoryImage src={decision.image} alt={decision.alt} className="lurn-decision-image" />
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="lurn-section lurn-outcome-section" id="lurn-outcome" aria-labelledby="lurn-outcome-title">
+          <div className="lurn-section-heading">
+            <p className="lurn-eyebrow">Outcome & reflection</p>
+            <h2 id="lurn-outcome-title">A six-hour concept for more approachable learning.</h2>
+            <p>The designathon brought assignment breakdown, student engagement, and teacher workflows into one concept. The project materials do not document user testing or measured learning outcomes.</p>
+          </div>
+          <div className="lurn-identity" aria-label="Lurn visual identity colors"><span className="lurn-swatch" data-color="lavender">Lavender <code>#CFA4CC</code></span><span className="lurn-swatch" data-color="blue">Baby blue <code>#9FC4E8</code></span><span className="lurn-swatch" data-color="poppy">Poppy <code>#EE5A36</code></span><span className="lurn-swatch" data-color="green">Forest green <code>#1A9562</code></span><span className="lurn-swatch" data-color="yellow">Golden yellow <code>#FCCA59</code></span></div>
+          <div className="lurn-showcase">
+            <figure><StoryImage src="student-dashboard.png" alt="Lurn student dashboard concept with weekly progress and subject choices" /></figure>
+            <figure><StoryImage src="iPhone 16 - 1.jpg" alt="Lurn mobile student dashboard with weekly activities and subject cards" /></figure>
+            <figure><StoryImage src="teacher-interface.svg" alt="Lurn teacher interface concept showing the classroom dashboard" /></figure>
+          </div>
+          <div className="lurn-reflection"><h3>Next steps</h3><p>I would test both workflows with students and teachers, then use their feedback to refine the activity structure and accessibility options.</p></div>
+        </section>
+      </div>
+    </CaseStudyFrame>
+  )
+}

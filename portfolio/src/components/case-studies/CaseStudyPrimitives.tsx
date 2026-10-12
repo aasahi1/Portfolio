@@ -32,11 +32,11 @@ export function CaseStudyFrame({
 
         {children}
 
-        <nav aria-label="Other case studies" className="case-study-related">
+        <nav aria-label="Other projects" className="case-study-related">
           <div className="case-study-related-heading mb-5 flex flex-wrap items-end justify-between gap-3">
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#AF2500]">Continue exploring</p>
-              <h2 className="mt-1 text-2xl font-bold tracking-tight">More selected work</h2>
+              <h2 className="mt-1 text-2xl font-bold tracking-tight">Other projects</h2>
             </div>
             <Link to="/projects" className="inline-flex min-h-10 items-center gap-1 text-sm font-semibold underline decoration-[#AF2500]/60 underline-offset-4 hover:text-[#AF2500] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#AF2500]">All projects <ArrowUpRight size={15} aria-hidden="true" /></Link>
           </div>
@@ -201,7 +201,7 @@ export function CaseStudyAnchorNav({ items }: { items: { href: string; label: st
     return () => observer.disconnect()
   }, [items])
 
-  return <nav aria-label="Case study sections" className="case-study-anchor-nav"><span className="case-study-progress-line" aria-hidden="true" /><ul>{items.map((item) => {
+  return <nav aria-label="Project sections" className="case-study-anchor-nav"><span className="case-study-progress-line" aria-hidden="true" /><ul>{items.map((item) => {
     const active = item.href === activeHref
     return <li key={item.href}><a href={`#${item.href}`} aria-current={active ? "location" : undefined} title={item.label} className={active ? "is-active" : undefined}><span className="case-study-progress-label">{item.label}</span><span className="case-study-progress-dot" aria-hidden="true" /></a></li>
   })}</ul></nav>
